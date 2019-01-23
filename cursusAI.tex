@@ -1,0 +1,223 @@
+\documentclass[titlepage,a4paper]{article}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{index}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{multicol}
+\usepackage{algorithmic}
+\usepackage{wasysym}
+\usepackage{subfigure}
+\usepackage{framed}
+\usepackage[amsmath,amsthm,thmmarks]{ntheorem}
+\usepackage{ulem}
+
+\usetikzlibrary{decorations.pathmorphing}
+
+\algsetup{indent=2em}
+\makeindex
+\title{Cursus:\\Artifici\"ele Intelligentie\\\texttt{\small versie 1.6.180.340}}
+\author{Willem M. A. Van Onsem BSc}
+\date{Katholieke Universiteit Leuven\\Academiejaar 2009-2010}
+
+\newcommand{\bigoh}[1]{\ensuremath{\mathcal{O}\left(#1\right)}}
+\newcommand{\termenlayout}[1]{\textbf{\sffamily{#1}}}
+\newcommand{\termen}[1]{\index{#1}\termenlayout{#1}}
+\newcommand{\algref}[1]{\textbf{Algorithm \ref{#1}}}
+\newcommand{\remarksimp}[1]{\fcolorbox{black}{red}{\begin{minipage}{\textwidth}\begin{centering}\textit{#1}\end{centering}\end{minipage}}}
+
+\newcommand{\chapterquote}[2]{\begin{figure*}[htb]
+\centering
+\begin{tikzpicture}
+\node[text width=12cm,anchor=center] (Q) at (0,0) {\Large\textit{#1}};
+\node[gray,anchor=north east] (Ql) at (Q.north west) {\Huge\textbf{``}};
+\node[gray,anchor=north west] (Qr) at (Q.south east) {\Huge\textbf{''}};
+\node[black!80,anchor=north east] (Qa) at (Qr.north west) {\small - #2};
+\end{tikzpicture}
+\end{figure*}
+}
+\newcommand{\true}{\mbox{\bf true}}
+\newcommand{\out}{\mbox{\bf out: }}
+\newcommand{\false}{\mbox{\bf false}}
+\newcommand{\queue}{\mbox{Queue}}
+\newcommand{\success}{\mbox{success}}
+\newcommand{\failure}{\mbox{failure}}
+\newcommand{\depth}{\mbox{depth}}
+\newcommand{\depthbound}{\mbox{depthbound}}
+\newcommand{\rootR}{\mbox{root}}
+\newcommand{\goal}{\mbox{goal}}
+\newcommand{\fbound}{\mbox{$f$-bound}}
+\newcommand{\fnew}{\mbox{$f$-new}}
+\newcommand{\Marcus}{\mbox{Marcus}}
+\newcommand{\Cesar}{\mbox{Cesar}}
+\newcommand{\derived}{\mbox{Derived}}
+\newcommand{\mgut}{\mbox{mgu}}
+\newcommand{\errort}{\mbox{error}}
+\newcommand{\stopt}{\mbox{stop}}
+\newcommand{\variables}{\mbox{variables}}
+\newcommand{\inconsistent}{\mbox{inconsistent}}
+\newcommand{\consistent}{\mbox{consistent}}
+\newcommand{\nextdepth}{\mbox{nextdepth}}
+
+\newcommand{\mathfunc}[2]{\ensuremath{\mbox{#1}\left( #2 \right)}}
+\newcommand{\mathcommand}[2]{\ensuremath{\mbox{\bf #1}\left( #2 \right)}}
+\newcommand{\mathcommandsub}[3]{\ensuremath{\mbox{\bf #1}_{#2}\left( #3 \right)}}
+\newcommand{\notempty}[1]{\ensuremath{\mbox{\bf notEmpty}\left( #1 \right)}}
+\newcommand{\goalreached}[1]{\ensuremath{\mbox{\bf goalReached}\left( #1 \right)}}
+\newcommand{\dequeue}[1]{\ensuremath{\mbox{\bf dequeue}\left( #1 \right)}}
+\newcommand{\createnewpaths}[1]{\mathcommand{createNewPaths}{#1}}
+\newcommand{\createnewreversedpaths}[1]{\mathcommand{createNewReversedPaths}{#1}}
+\newcommand{\removeloops}[1]{\mathcommand{removeLoops}{#1}}
+\newcommand{\removeif}[1]{\mathcommand{removeIf}{#1}}
+\newcommand{\enqueue}[1]{\mathcommand{enqueue}{#1}}
+\newcommand{\enqueuefront}[1]{\mathcommand{enqueueFront}{#1}}
+\newcommand{\enqueueback}[1]{\mathcommand{enqueueBack}{#1}}
+\newcommand{\enqueuerandom}[1]{\mathcommand{enqueueRandom}{#1}}
+\newcommand{\sharestate}[1]{\mathcommand{shareState}{#1}}
+\newcommand{\depthNode}[1]{\mathcommand{depth}{#1}}
+\newcommand{\quicksort}[1]{\mathcommand{quickSort}{#1}}
+\newcommand{\delete}[1]{\mathcommand{delete}{#1}}
+\newcommand{\inserthashtable}[1]{\mathcommand{insertHashtable}{#1}}
+\newcommand{\hashtablecontains}[1]{\mathcommand{hashtableContains}{#1}}
+\newcommand{\select}[1]{\mathcommand{select}{#1}}
+\newcommand{\selectone}[1]{\mathcommand{selectOne}{#1}}
+\newcommand{\selectionpossible}[1]{\mathcommand{selectionPossible}{#1}}
+\newcommand{\hypothesiscovers}[1]{\mathcommand{hypothesisCovers}{#1}}
+\newcommand{\minimalgeneralisationthatcovers}[1]{\mathcommand{minimalGeneralisationThatCovers}{#1}}
+\newcommand{\minimalspecialisationthatnotcovers}[1]{\mathcommand{minimalSpecialisationthatNotCovers}{#1}}
+\newcommand{\minimalgeneralisationsthatcovers}[1]{\mathcommand{minimalGeneralisationsThatCovers}{#1}}
+\newcommand{\minimalspecialisationsthatnotcovers}[1]{\mathcommand{minimalSpecialisationsThatNotCovers}{#1}}
+\newcommand{\isspecialisationof}[1]{\mathcommand{isSpecialisationOf}{#1}}
+\newcommand{\isgeneralisationof}[1]{\mathcommand{isGeneralisationOf}{#1}}
+\newcommand{\domain}[1]{\mathcommand{domain}{#1}}
+\newcommand{\removeinconsistentvaluesof}[1]{\mathcommand{removeInconsistentValuesOf}{#1}}
+\newcommand{\body}[1]{\mathcommand{body}{#1}}
+\newcommand{\bodyreplace}[1]{\mathcommand{bodyReplace}{#1}}
+\newcommand{\resolved}[1]{\mathcommand{resolved}{#1}}
+\newcommand{\resolvable}[1]{\mathcommand{resolvable}{#1}}
+\newcommand{\resolvent}[1]{\mathcommand{resolvent}{#1}}
+\newcommand{\factor}[1]{\mathcommand{factor}{#1}}
+\newcommand{\maxM}[2]{\mathcommandsub{max}{#1}{#2}}
+\newcommand{\minM}[2]{\mathcommandsub{min}{#1}{#2}}
+
+\newcommand{\Aa}{\mathbb{A}}
+\newcommand{\Bb}{\mathbb{B}}
+\newcommand{\Ee}{\mathbb{E}}
+\newcommand{\Mm}{\mathbb{M}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Ss}{\mathbb{S}}
+\newcommand{\Vv}{\mathbb{V}}
+
+\newcounter{theo}
+\newtheorem{theorem}[theo]{theorema}
+\newtheorem{corollary}[theo]{corollary}
+
+\begin{document}
+\begin{titlepage}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=5cm]{sedesVcrop.pdf}
+\end{figure*}
+\begin{figure*}[b]
+\centering
+\begin{tiny}
+$\mathcal{K}$
+\end{tiny}
+\begin{Huge}
+\textcopyleft
+\end{Huge}
+\begin{tiny}
+$\mathcal{S}$\\
+$\mathfrak{KOMMUSOFT}$
+\end{tiny}
+\caption{Support CopyLeft: All Wrongs Reserved!}
+\end{figure*}
+\maketitle
+\end{titlepage}
+\tableofcontents
+\newpage
+\section*{Notities vooraf}
+\begin{it}
+De index op het einde is bedoelt als een woordenlijst, indien de lezer het grote deel van deze termen kan thuisbrengen en duiden, is het waarschijnlijk dat hij zal slagen voor het examen.
+\\\\
+Deze cursus is hoofdzakelijk gebaseerd op de presentaties van Prof. D. De Schreye. Verder is deze cursus ook gebaseerd op de presentatie rond ``Metaheuristieken'' van Prof. P. De Causmaecker.
+\\\\
+Deze cursus is gepubliceerd onder de ``CopyLeft''-licentie, dit betekent dat iedereen vrij is deze te kopi\"eren, delen, herpubliceren en aanpassen zonder toestemming van de auteur in kwestie, indien dit onder dezelfde licentie gebeurt.\\ Indien de \LaTeX-broncode hierbij gewenst is, kunt u mailen naar {\tt vanonsem.willem@gmail.com}.
+\\\\
+De auteur garandeert de juistheid van deze cursus \underline{niet}. Hoewel deze cursus met de nodige zorg is samengesteld, is het niet ondenkbaar dat er fouten in staan. Errata/opmerkingen/suggesties kunnen altijd doorgestuurd worden naar {\tt vanonsem.willem@gmail.com}, deze worden dan in de volgende versie verbeterd.
+
+\paragraph{Over de auteur} valt eigenlijk niet veel te zeggen, behalve dat hij geen exemplaren signeert.
+\\\\
+Speciale dank gaat naar (in alfabetische volgorde) ``Blind Guardian'', ``The Electric Light Orchestra'', ``Joy'', ``Piknik'', ``Secret Service'', ``Sektor Gaza'', ``The Scorpions'' en ``Zombie Nation'' voor de muziek tijdens de 7 nachten waarin deze cursus tot stand kwam.
+\\\\\\
+Kudos gaan verder uit naar de volgende groepen/personen (in alfabetische volgorde):
+\begin{description}
+ \item[Derde Bachelor Wiskunde Minor Informatica K.U.Leuven 2010-2011] Die waarschijnlijk het gedeelte over metaheuristieken wetenschappelijk onverantwoord zullen vinden.
+ \item[\textbf{\texttt{DhfCYscOCwsXB}}] Voor een glimlach van tijd tot tijd.
+ \item[Donald Knuth] Voor een norm hoe cursussen er horen uit te zien, en de ontwikkeling van \TeX{}.
+ \item[Ingmar Dasseville] Debugger van deze cursus en pianist die het algemene karma verstoort.
+ \item[Jonas Vanthornhout] Invoeren van de term ``\"Uberalgemene Modus Ponens'' (zie \ref{sss:unification}).
+ \item[\texttt{Narod.Ru}] Voor culturele ontdekkingen.
+ \item[Personen die errata indienden] Harm De Weirdt, Ingmar Dasseville, Maarten Dhondt, Pieter-Jan Vuylsteke, Robin De Croon.
+ \item[Tweede Bachelor Informatica KULAK 2010-2011] Die waarschijnlijk zullen proberen om deze cursus te lezen, en daar hopelijk ook in slagen.
+\end{description}
+\end{it}
+\include{ai_voorbeschouwing}
+\include{ai_layout}
+\include{ai_statespaces}
+\include{ai_zoekproblemen}
+\include{ai_conceptlearning}
+\include{ai_constraintprocessing}
+\include{ai_gameplaying}
+\include{ai_automaticreasoning}
+\include{ai_metaheuristics}
+\include{ai_machinelearning}
+\appendix
+\include{ai_appendices}
+\newpage
+\listoffigures
+\newpage
+\printindex
+\newpage
+\section*{``And now something completly different''}
+\begin{centering}
+$\mathfrak{Catharsis}$
+\end{centering}
+\[
+\Delta x\cdot\Delta p_x\geq\displaystyle\frac{\hbar}{2}
+\]
+\begin{flushright}
+Vrijheid van \textbf{Heisenbergh}
+\end{flushright}
+\[
+-\displaystyle\frac{\hbar^2}{2m}\displaystyle\frac{\partial^2\Psi}{\partial x^2}+U\cdot\Psi=E\cdot\Psi
+\]
+\begin{flushright}
+Alles gaat in golven van \textbf{Schr\"odinger}
+\end{flushright}
+\[
+x'=\displaystyle\frac{x-v\cdot t}{\sqrt{1-\displaystyle\frac{v^2}{c^2}}}
+\]
+\begin{flushright}
+Alles is relatief van \textbf{Einstein}
+\end{flushright}
+\[
+E=m\cdot c^2
+\]
+\begin{flushright}
+Alles is energie van \textbf{Einstein}
+\end{flushright}
+$\mathfrak{W.V.O.}$\\
+$\mathfrak{C.C.C.P.}$
+\begin{figure*}[b]
+\centering
+\includegraphics[width=3cm]{tux.pdf}
+\caption{Created with GNU/Linux!}
+\end{figure*}
+\end{document}
