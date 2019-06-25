@@ -1,0 +1,20 @@
+language: generic
+install:
+- source ./.travis/texlive_install.sh
+cache:
+  directories:
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
+before_script: cd $TRAVIS_BUILD_DIR/
+script:
+- texliveonfly "cursusAI"
+- travis_wait 3 latexmk -pdf -synctex=1 -output-directory=_build "cursusAI"
+deploy:
+  provider: releases
+  api_key:
+    secure: hKf3+y71f0U4BZDZ1LnWibpDIxQh/5to7Na4nExLUMnm82gXld9Mc0AS48Z7du/38kbOWLUoleI1q7LqEYRirxLpmiyb5Ad2LKPfdkvp9vgUxutMKu1+i1fcLvLJd4pah/gn62quF8pdDFxhv1oVX14jrb3OTfOQ4awmRyd7hJSWj3AlTRiqZYhaqN8Nx5Kg5qXspXETMlAiARCurxxjp4Q3XDT633V/xQFJr/3QTsp/SzthnfP0ttYME0pUP3UxL54JEDRzau8F+kLM7/kQVnjal+t7R54Za6F6wBnYJ1I0RYEPEgnoOZ63Ac/NRQ2KNyYFq2PCIGJTh3FG7vXW3j5XpM5xB788Vh6akMdMjUt+MK7x8atCQPl0B8RiArT0s2ecbqqXOiEA5hf1uIVazRKCyTJqFyb7dUfF7gT/ZmgRPKwFx6HJbJvrxXaObchRHYIaswiZbOY/SwYjeDiFGrM9deVeuZQRdX/GW9HyOev2JanP520EUaRozJxb83mMDHEjW63Ix3fi/rwGMHFl99ghp7msCOJvifBK3R9XtZeJwsVSwZ/8EHwVGZQFN5SyWJHq5WxbcswqWucFHApmUPifczXct1e3Rni5VTT+c8YZstHLFHuDKxwYt7u4JogY52moCwtSpxZH2ErAjn1ayHvgg87nb/ID84cv1iMj8H0=
+  file: _build/cursusAI.pdf
+  skip_cleanup: true
+  on:
+    repo: principis/studentencursus-AI
+    tags: true
