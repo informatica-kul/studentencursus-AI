@@ -3,7 +3,7 @@
 \chapterquote{Voor elke toestand, hoe moeilijk ook is er een uitweg. Het komt er alleen op aan een besluit te nemen.}{Leo Tolstoy, Russisch romanschrijver (1828-1910)}
 \subsection{Leidend Voorbeeld: Missionaries \& Cannibals}
 \begin{leftbar}
-Als leidend voorbeeld voor dit eerste hoofdstuk opteren we voor het Missionaries \& Cannibals probleem. Dit probleem kunnen we als volgt beschrijven: we beschouwen twee oevers, aan \'e\'en kant staan drie missionarissen en drie kannibalen. Aan de oever ligt ook een boot, deze kan maximum twee personen (kannibalen of missionarissen) tegelijk overzetten. De boot kan alleen de andere oever bereiken indien minstens \'e\'en persoon zich in de boot bevindt. Het is de bedoeling dat zowel de drie missionarissen als de kannibalen de andere oever bereiken. Indien echter aan een oever meer kannibalen dan missionarissen staan, verliezen deze de macht over de kannibalen, en worden ze opgegeten, en is het spel ten einde. Dit is schematisch weergegeven op figuur \ref{fig:missionariesAndCannibals}.
+Als leidend voorbeeld voor dit eerste hoofdstuk opteren we voor het Missionaries \& Cannibals probleem. Dit probleem kunnen we als volgt beschrijven: we beschouwen twee oevers, aan één kant staan drie missionarissen en drie kannibalen. Aan de oever ligt ook een boot, deze kan maximum twee personen (kannibalen of missionarissen) tegelijk overzetten. De boot kan alleen de andere oever bereiken indien minstens één persoon zich in de boot bevindt. Het is de bedoeling dat zowel de drie missionarissen als de kannibalen de andere oever bereiken. Indien echter aan een oever meer kannibalen dan missionarissen staan, verliezen deze de macht over de kannibalen, en worden ze opgegeten, en is het spel ten einde. Dit is schematisch weergegeven op figuur \ref{fig:missionariesAndCannibals}.
 \end{leftbar}
 \begin{figure}[htb]
 \centering
@@ -40,9 +40,9 @@ Als leidend voorbeeld voor dit eerste hoofdstuk opteren we voor het Missionaries
 een \termen{state-space} is de verzameling van de verschillende staten (toestanden) waarin een probleem zich kan bevinden, waarbij de staat deterministisch en ondubbelzinnig uitgedrukt wordt. Daarnaast bevat een state-space ook een set \termen{productieregels}: condities om van de ene staat van het probleem naar een andere te gaan. Verder bezit een state-space ook een set \termen{begin sta(a)t(en)}, en een set voorwaarden waarbij het \termen{doel} is bereikt (we het probleem dus opgelost hebben).
 \paragraph{}
 \begin{leftbar}
-Hoe zouden we nu het Missionaries \& Cannibals probleem kunnen omzetten naar een statespace? Het enige wat we eigenlijk moeten weten is hoeveel missionarissen en cannibalen er aan \'e\'en van de twee oevers staan, en aan welke oever de boot ligt. Daarom introduceren we een notatie die er als volgt uit ziet: $\left\langle M,K,B\right\rangle$ hierbij stellen $M$ het aantal missionarissen, en $K$ het aantal kannibalen voor op de linkeroever. En schrijven we voor $B$, $l$ indien de boot zich op de linkeroever, en $r$ indien de boot zich op de rechteroever bevindt. De begintoestand noteren we dus als $\left\langle3,3,l\right\rangle$. Het doel is logischerwijs: $\left\langle0,0,r\right\rangle$.
+Hoe zouden we nu het Missionaries \& Cannibals probleem kunnen omzetten naar een statespace? Het enige wat we eigenlijk moeten weten is hoeveel missionarissen en cannibalen er aan één van de twee oevers staan, en aan welke oever de boot ligt. Daarom introduceren we een notatie die er als volgt uit ziet: $\left\langle M,K,B\right\rangle$ hierbij stellen $M$ het aantal missionarissen, en $K$ het aantal kannibalen voor op de linkeroever. En schrijven we voor $B$, $l$ indien de boot zich op de linkeroever, en $r$ indien de boot zich op de rechteroever bevindt. De begintoestand noteren we dus als $\left\langle3,3,l\right\rangle$. Het doel is logischerwijs: $\left\langle0,0,r\right\rangle$.
 \paragraph{}
-Zoals reeds eerder vermeld, is dit probleem gebonden aan enkele voorwaarden. Zo mogen er nooit meer kannibalen dan missionarissen op \'e\'en van de oevers aanwezig zijn, tenzij er zich geen missionarissen op deze oever bevinden. Dit vertaald zich naar twee regels die we hieronder beschrijven:
+Zoals reeds eerder vermeld, is dit probleem gebonden aan enkele voorwaarden. Zo mogen er nooit meer kannibalen dan missionarissen op één van de oevers aanwezig zijn, tenzij er zich geen missionarissen op deze oever bevinden. Dit vertaald zich naar twee regels die we hieronder beschrijven:
 \begin{equation}
 \left\langle M,K,B\right\rangle\mbox{ is geldig}\Leftrightarrow\left\{
 \begin{array}{cl}
@@ -52,7 +52,7 @@ M=3\vee M\leq K&\mbox{\{Rechter oever\}}
 \end{array}\right.
 \end{equation}
 \paragraph{}
-Welke productieregels defini\"eren we? Indien de boot links staat dienen we minstens \'e\'en en maximum twee personen over te zetten. Omgekeerd indien de boot aan de rechter oever ligt, dienen we \'e\'en of twee personen aan de linkerover toe te voegen. Indien we deze regels formaliseren, bekomen we volgende regels:
+Welke productieregels definiëren we? Indien de boot links staat dienen we minstens één en maximum twee personen over te zetten. Omgekeerd indien de boot aan de rechter oever ligt, dienen we één of twee personen aan de linkerover toe te voegen. Indien we deze regels formaliseren, bekomen we volgende regels:
 \begin{equation}
 \left\{\begin{array}{rcl|l}
 \left\langle M,K,l\right\rangle&\Rightarrow&\left\langle M-\delta_m,K-\delta_k,r\right\rangle&\delta_m,\delta_k\in\left\{0,1,2\right\}\wedge1\leq\delta_m+\delta_k\leq 2\\

@@ -1,7 +1,7 @@
 \section{Automatische Redeneersystemen}
 \label{s:automaticReasoning}
 \chapterquote{Logica is de architectuur van de menselijke rede.}{Evelyn Waugh, Brits schrijfster (1903-1966)}
-Naast zoekproblemen en het oplossen van constraint netwerken, blijkt de Artifici\"ele intelligentie ook een uiterst geschikt domein te zijn voor logica. Al in de jaren '60 had men het droombeeld van de computer als stellingbewijzer. Met logica kan immers alles formeel uitgedrukt worden. Bijgevolg, zo redeneerde men, kan men een machine bouwen die door het toepassen van simpele regels, in staat moet zijn om met een stelsel uitspraken, een afgeleide uitspraak te kunnen bewijzen. Deze hypothese is werd gestaafd met volgende argumenten:
+Naast zoekproblemen en het oplossen van constraint netwerken, blijkt de Artificiële intelligentie ook een uiterst geschikt domein te zijn voor logica. Al in de jaren '60 had men het droombeeld van de computer als stellingbewijzer. Met logica kan immers alles formeel uitgedrukt worden. Bijgevolg, zo redeneerde men, kan men een machine bouwen die door het toepassen van simpele regels, in staat moet zijn om met een stelsel uitspraken, een afgeleide uitspraak te kunnen bewijzen. Deze hypothese is werd gestaafd met volgende argumenten:
 \begin{itemize}
  \item Logica is de assembleertaal van de kennis en ligt bovendien heel dicht bij de natuurlijke taal: bijgevolg kan men bijna elke vorm van kennis omzetten in formele ondubbelzinnige logica.
  \item Als computers kennis moeten verwerken, dan moet die kennis formeel en ondubbelzinnig zijn.
@@ -13,8 +13,8 @@ De vraag is dus of we deze deductie kunnen automatiseren.
 Stel we beschikken over volgende bestaande kennis:
 \begin{enumerate}
  \item Marcus was een man
- \item Marcus was een Pompei\"er
- \item Alle Pompei\"ers waren Romeinen
+ \item Marcus was een Pompeiër
+ \item Alle Pompeiërs waren Romeinen
  \item Cesar was een Heerser
  \item Alle Romeinen waren ofwel loyaal aan Cesar of probeerden hem te vermoorden
  \item Iedereen is loyaal aan iemand
@@ -25,8 +25,8 @@ Stel we beschikken over volgende bestaande kennis:
 We willen een antwoord vinden op de vraag ``Was Marcus  Loyaal aan Cesar?''. Indien we dit zelf uitwerken zullen we meestal eerst alle uitspraken omzetten naar \termen{Eerste Orde logica}:
 \begin{enumerate}
  \item $\mathfunc{man}{\Marcus}$
- \item $\mathfunc{pompei\"er}{\Marcus}$
- \item $\forall x:\mathfunc{pompei\"er}{x}\rightarrow\mathfunc{romein}{x}$
+ \item $\mathfunc{pompeiër}{\Marcus}$
+ \item $\forall x:\mathfunc{pompeiër}{x}\rightarrow\mathfunc{romein}{x}$
  \item $\mathfunc{heerser}{\Cesar}$
 \item $\forall x:\mathfunc{romein}{x}\rightarrow\left(\begin{array}{c}\mathfunc{loyaalAan}{x,\Cesar}\wedge\neg\mathfunc{probeerTeVermoorden}{x,\Cesar}\\\vee\\\neg\mathfunc{loyaalAan}{x,\Cesar}\wedge\mathfunc{probeerTeVermoorden}{x,\Cesar}\end{array}\right)$
  \item $\forall x, \exists y:\mathfunc{loyaalAan}{x,y}$
@@ -68,13 +68,13 @@ Bovenstaand voorbeeld legt echter onmiddellijk een paar problemen bloot:
 \begin{enumerate}
  \item Imprecies taalgebruik: niet alle taal is machinaal onmiddellijk te vervangen door logica (bijvoorbeeld 7)
  \item Evidente informatie: vooral 9 wordt bijvoorbeeld makkelijk vergeten omdat deze vanzelfsprekend is
- \item Niet alle informatie is makkelijk voor te stellen met logica (zoals ``bijna'',``meestal'',...)
+ \item Niet alle informatie is makkelijk voor te stellen met logica (zoals ``bijna'',``meestal'',\dots)
  \item Logica is niet handig vanuit ``Sofware-engineering'' perspectief (lijkt te veel op assembler)
 \end{enumerate}
  \item Problem solving:
 \begin{enumerate}
  \item Een groot aantal tradeoffs die ook bij zoekmethodes voorkwamen (zie \ref{ss:stateSpaceTradeOffs})
- \item Welke deductieregels hebben we nodig (Modus Ponens, Modus Tollens,...)
+ \item Welke deductieregels hebben we nodig (Modus Ponens, Modus Tollens,\dots)
  \item Hoe behandelen we $\forall x$ en $\exists y$
  \item Hoe berekenen we substituties (in het voorbeeld eenvoudig, in de praktijk soms oneindig veel mogelijkheden)
  \item Wat bewijzen we? ``Het te bewijzen'' of het omgekeerde?
@@ -107,7 +107,7 @@ Hieronder worden enkele concrete schoolvoorbeelden van propositielogica weergege
 \paragraph{Semantiek}
 We kunnen de betekenis of \termen{semantiek} van een expressie vastleggen op twee manieren: Door middel van natuurlijke taal, of door middel van \termen{transformationele semantiek}. In dat laatste geval beschrijven we de statements door een daar uit afgeleid mathematisch object. Zo kunnen we bijvoorbeeld uit een reeks statements alle atomaire proposities die waar zijn doormiddel van \termen{logisch gevolg} weergeven. Indien we vervolgens een expressie controleren kunnen we deze opbouwen vanuit de waarheidstabel.
 \paragraph{Logisch Gevolg}
-Maar hoe defini\"eren we dan logisch gevolg? intu\"itief denken we aan alles wat we logisch gezien willen vastleggen maar dit is niet het geval. Op dit ogenblik hebben we immers nog geen verzameling afleidingsregels. Dat is immers wat we willen vastleggen! Een logisch gevolg wordt bereikt door \termen{Interpretatie} en een \termen{Model}:
+Maar hoe definiëren we dan logisch gevolg? Intuïtief denken we aan alles wat we logisch gezien willen vastleggen maar dit is niet het geval. Op dit ogenblik hebben we immers nog geen verzameling afleidingsregels. Dat is immers wat we willen vastleggen! Een logisch gevolg wordt bereikt door \termen{Interpretatie} en een \termen{Model}:
 \begin{description}
  \item[Interpretatie:]Is een functie die aan iedere atomaire formule een bepaalde waarheidswaarde toekent, en vervolgens alle statements coontroleert. We genereren dus een \termen{waarheidstabel}.
  \item[Model:]Een model toetst vervolgens deze statements op hun waarheid. Configuraties waarbij geen statements falen worden hierbij als een logisch gevolg gezien. Een model $M$ is dus een subset van een interpretatie $I$ indien alle expressies waarop de expressie gebaseerd zijn, waar zijn.
@@ -118,9 +118,9 @@ Hoewel propositielogica reeds heel wat problemen kan oplossen, kunnen we het lei
 \begin{itemize}
  \item \termen{Variabelen} (zoals $x$ en $y$): deze vervullen een tijdelijke rol met behulp van kwantoren
  \item \termen{Constanten} (zoals $\Cesar$ en $\Marcus$): hun rol is globaal en dus gedefinieerd over alle statements
- \item \termen{Functie-symbolen} (zoals $\mbox{vader}$, $\mbox{hart}$,...): om bepaalde relaties ten opzichte van variabelen en constanten te defini\"eren
- \item \termen{Predicaatsymbolen} (zoals $\mbox{mens}$, $\mbox{loyaalAan}$,...): gebruikers gedefinieerde symbolen om een algoritme te kunnen laten werken, deze kennen bovendien een waarheidswaarde toe.
- \item Connectieven ($\wedge$, $\neg$,...): om meer geavanceerde uitspraken te doen (net als bij propositielogica)
+ \item \termen{Functie-symbolen} (zoals $\mbox{vader}$, $\mbox{hart}$,\dots): om bepaalde relaties ten opzichte van variabelen en constanten te definiëren
+ \item \termen{Predicaatsymbolen} (zoals $\mbox{mens}$, $\mbox{loyaalAan}$,\dots): gebruikers gedefinieerde symbolen om een algoritme te kunnen laten werken, deze kennen bovendien een waarheidswaarde toe.
+ \item Connectieven ($\wedge$, $\neg$,\dots): om meer geavanceerde uitspraken te doen (net als bij propositielogica)
  \item Punctuaties ($($ en $)$): het geven van prioriteit aan een bepaald deel van de expressie
  \item \termen{Quantoren} ($\forall$ en $\exists$): het geven van een invulling aan de variabelen
 \end{itemize}
@@ -141,9 +141,9 @@ Hoe moeten we nu deze formules interpreteren? We kunnen een expressie in predica
 \subsection{Automatisch Redeneer-systemen voor eerste-orde predicatenlogica}
 In deze subsectie zullen we een automatisch rendeneer-systeem voor eerste-orde predicaten logica ontwerpen. Hierbij bezitten we een kennisbank geschreven in predicatenlogica die we $T$ noemen. Dit is een verzameling van eerste-orde formules en wordt formeel ook wel eens de ``\termen{Theorie}'' genoemd. Verder beschikken we over een bijkomende eerste-orde predicatenlogica-formule $F$. De vraag die beantwoordt dient te worden is of $T$, $F$ impliceert, of formeler: $T\vDash F$. We zoeken dus een afleidingstechniek die dit kan uitmaken voor iedere $F$ en $T$. Daarnaast zijn ook correctheid, volledigheid en efficientie vereiste criteria.
 \subsubsection{Beslisbaarheid}
-Is iedere formule te beslissen? Volgens de \termen{stelling van Church}, bestaat er geen enkel algoritme die in staat is voor iedere $T$ en $F$ uit te maken of $T\vDash F$. Dit ondermijnt dus onmiddellijk ons eerder gestelde doel: Niet elk probleem is beslisbaar. Anderzijds zegt de \termen{Volledigheidsstelling van G\"odel} dat er een redeneertechniek bestaat waarbij voor iedere $T$ en $F$ waarbij $T\vDash F$, deze techniek dit kan bewijzen. Dit wordt \termen{semi-beslisbaarheid} genoemd. Dus indien $F$ uit $T$ volgt, is dit bewijsbaar. Indien we noch $T\vDash F$ noch $T\vDash \neg F$ kunnen bewijzen, kunnen we bijgevolg niets zeggen over $F$.
+Is iedere formule te beslissen? Volgens de \termen{stelling van Church}, bestaat er geen enkel algoritme die in staat is voor iedere $T$ en $F$ uit te maken of $T\vDash F$. Dit ondermijnt dus onmiddellijk ons eerder gestelde doel: Niet elk probleem is beslisbaar. Anderzijds zegt de \termen{Volledigheidsstelling van Gödel} dat er een redeneertechniek bestaat waarbij voor iedere $T$ en $F$ waarbij $T\vDash F$, deze techniek dit kan bewijzen. Dit wordt \termen{semi-beslisbaarheid} genoemd. Dus indien $F$ uit $T$ volgt, is dit bewijsbaar. Indien we noch $T\vDash F$ noch $T\vDash \neg F$ kunnen bewijzen, kunnen we bijgevolg niets zeggen over $F$.
 \subsubsection{Achterwaartse Resolutie}
-In het algemeen wordt voor automatisch redeneren in de eerste orde slechts \'e\'en aanpak gehanteerd: \termen{Achterwaartse resolutie}. Deze techniek bevat verschillende technische componenten, die we stap voor stap zullen uitwerken, en waarbij we de predicatentaal zullen uitbreiden van \termen{Gegronde Horn Clause Logica} over \termen{Horn Clause logica} en \termen{Clausale logica} tot uiteindelijk de volledige predicatenlogica. Voor elk van deze talen zullen we een semi-beslisbare procedure bouwen, die we verder zullen moeten verfijnen indien we de taal uitbreiden. De achterwaartse resolutie is gebaseerd op de volgende principes:
+In het algemeen wordt voor automatisch redeneren in de eerste orde slechts één aanpak gehanteerd: \termen{Achterwaartse resolutie}. Deze techniek bevat verschillende technische componenten, die we stap voor stap zullen uitwerken, en waarbij we de predicatentaal zullen uitbreiden van \termen{Gegronde Horn Clause Logica} over \termen{Horn Clause logica} en \termen{Clausale logica} tot uiteindelijk de volledige predicatenlogica. Voor elk van deze talen zullen we een semi-beslisbare procedure bouwen, die we verder zullen moeten verfijnen indien we de taal uitbreiden. De achterwaartse resolutie is gebaseerd op de volgende principes:
 \begin{itemize}
  \item \termen{Clausale vorm} (in \ref{sss:clausaleLogic} op pagina \pageref{sss:clausaleLogic})
  \item \termen{Bewijs door inconsistentie} (in \ref{sss:inconsistenceProof} op pagina \pageref{sss:inconsistenceProof})
@@ -156,7 +156,7 @@ Nadat we eerst de verschillende beperkte predicaattalen uitleggen in subsubsecti
 deze principes in de  verdere subsubsecties verder uitgelegd. Na een korte introductie zal vervolgens dieper ingegaan op de materie. Eventueel kan de lezer bij ieder item eerst de eerste paragraaf lezen, en vervolgens zijn kennis uitbreiden met de overige paragrafen.
 \subsubsection{Gegronde Horn Clause Logica}
 \label{sss:gegrondeHornClausaleLogic}
-Een formaat die ons toelaat een eerste de basis van redeneren te defini\"eren is de Gegronde Horn Clausale vorm. Hierbij worden geen variabelen toegelaten. Alleen predicaatsymbolen met constanten en functies worden toegelaten. Een typische Gegronde Horn Clausale expressie ziet er dus als volgt uit:
+Een formaat die ons toelaat een eerste de basis van redeneren te definiëren is de Gegronde Horn Clausale vorm. Hierbij worden geen variabelen toegelaten. Alleen predicaatsymbolen met constanten en functies worden toegelaten. Een typische Gegronde Horn Clausale expressie ziet er dus als volgt uit:
 \begin{equation}
 A\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_n
 \end{equation}
@@ -174,11 +174,11 @@ Volgende expressies staan in Gegronde Horn Clause Logica:
 \end{leftbar}
 \subsubsection{Horn Clause Logica}
 \label{sss:hornClausaleLogic}
-Indien we de gegrondheid laten vallen, bekomen we de Horn Clause Logica. Voortaan zijn variabelen wel toegestaan, zolang deze echter universieel gekwantificeerd (alleen $\forall x$ is toegelaten, $\exists y$ is verboden) zijn. Bovendien worden alle variabelen vooraan in de expressie gedefinieerd (twee variabelen met dezelfde naam zijn bijgevolg niet mogelijk). Hierdoor kunnen we in principe de $\forall x$-definities weglaten (Daar slechts \'e\'en quantor toegelaten, kunnen we deze impliciet schrijven voor iedere variabele in de expressie). We beschrijven dan ook het formaat als volgt:
+Indien we de gegrondheid laten vallen, bekomen we de Horn Clause Logica. Voortaan zijn variabelen wel toegestaan, zolang deze echter universieel gekwantificeerd (alleen $\forall x$ is toegelaten, $\exists y$ is verboden) zijn. Bovendien worden alle variabelen vooraan in de expressie gedefinieerd (twee variabelen met dezelfde naam zijn bijgevolg niet mogelijk). Hierdoor kunnen we in principe de $\forall x$-definities weglaten (Daar slechts één quantor toegelaten, kunnen we deze impliciet schrijven voor iedere variabele in de expressie). We beschrijven dan ook het formaat als volgt:
 \begin{equation}
 \forall x_1,\forall x_2\ldots,\forall x_k\ A\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_n
 \end{equation}
-Naast de hierboven beschreven \termen{Implicatieve vorm} van de Horn Clause logica, Bestaat er ook nog een \termen{Conjunctieve vorm} die er als volgt uitziet:
+Naast de hierboven beschreven \termen{Implicatieve vorm} van de Horn Clause logica, bestaat er ook nog een \termen{Conjunctieve vorm} die er als volgt uitziet:
 \begin{equation}
 \forall x_1,\forall x_2\ldots,\forall x_k\ A\vee\neg B_1\vee\neg B_2\vee\ldots\vee\neg B_n
 \end{equation}
@@ -188,7 +188,7 @@ De representatiekracht van de Horn Clauses is echter nog steeds beperkt. Hoewel 
 Volgende expressies zijn voorbeelden van Horn Clauses:
 \begin{equation}
 \left\{\begin{array}{l}
-\forall x:\mathfunc{romein}{x}\leftarrow\mathfunc{pompei\"er}{x}\\
+\forall x:\mathfunc{romein}{x}\leftarrow\mathfunc{pompeiër}{x}\\
 \forall x,\forall y:\mathfunc{moeder}{x,y}\leftarrow\mathfunc{ouder}{x,y}\wedge\mathfunc{vrouw}{y}\\
 \forall x:\mathfunc{probeerTeVermoorden}{x,\Cesar}\vee\mathfunc{probeerTeVermoorden}{\Cesar,x}
 \end{array}\right.
@@ -257,7 +257,7 @@ Nu we alle formaten gedefinieerd hebben, kunnen we een strategie opbouwen waarbi
 &A
 \end{array}
 \end{equation}
-Deze regels heeft echter weinig praktisch nut bij Gegronde Horn Clause logica, omdat het formaat toelaat dat we conjuncties in het lichaam plaatsen. We hebben dus nood aan een algemenere deductieregel die hiermee overweg kan. Hiervoor defini\"eren we de \termen{Veralgemeende Modus Ponens}, een regel die stelt dat indien we een expressie $A\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_n$ kennen, en we weten dat $B_1,B_2,\ldots,B_n$ allemaal waar zijn, we ook weten dat $A$ waar is. Deze regel kunnen we eenvoudig bewijzen door middel van inductie. Formeel defini\"eren we dus de Veralgemeende Modus Ponens als:
+Deze regels heeft echter weinig praktisch nut bij Gegronde Horn Clause logica, omdat het formaat toelaat dat we conjuncties in het lichaam plaatsen. We hebben dus nood aan een algemenere deductieregel die hiermee overweg kan. Hiervoor definiëren we de \termen{Veralgemeende Modus Ponens}, een regel die stelt dat indien we een expressie $A\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_n$ kennen, en we weten dat $B_1,B_2,\ldots,B_n$ allemaal waar zijn, we ook weten dat $A$ waar is. Deze regel kunnen we eenvoudig bewijzen door middel van inductie. Formeel definiëren we dus de Veralgemeende Modus Ponens als:
 \begin{equation}
 \begin{array}{lr}
 &B_1\\
@@ -287,7 +287,8 @@ Deze regels heeft echter weinig praktisch nut bij Gegronde Horn Clause logica, o
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
-Dit algoritme is correct omdat de Veralgemeende Modus Ponens correct is, en we eigenlijk niets anders doen dan deze herhaaldelijk uitvoeren. Het algoritme is ook volledig, omdat er slechts een eindig aantal \underline{Gegronde} Horn Clauses in $T$ zitten, bijgevolg zijn er maar een eindig aantal atomaire gevolgen. Effici\"ent is dit algoritme echter niet, het gaat niet gericht op zoek naar een oplossing maar probeert gewoon tot het uiteindelijk bij toeval de oplossing vindt. Er kunnen dus heel wat atomaire gevolgen afgeleid worden waar we eigenlijk niets aan hebben. Om dit probleem op te lossen zijn achterwaartse implementaties beter, waarbij men kijkt welke atomen men nodig heeft, en deze vervolgens probeert te zoeken.
+
+Dit algoritme is correct omdat de Veralgemeende Modus Ponens correct is, en we eigenlijk niets anders doen dan deze herhaaldelijk uitvoeren. Het algoritme is ook volledig, omdat er slechts een eindig aantal \underline{Gegronde} Horn Clauses in $T$ zitten, bijgevolg zijn er maar een eindig aantal atomaire gevolgen. Efficiënt is dit algoritme echter niet, het gaat niet gericht op zoek naar een oplossing maar probeert gewoon tot het uiteindelijk bij toeval de oplossing vindt. Er kunnen dus heel wat atomaire gevolgen afgeleid worden waar we eigenlijk niets aan hebben. Om dit probleem op te lossen zijn achterwaartse implementaties beter, waarbij men kijkt welke atomen men nodig heeft, en deze vervolgens probeert te zoeken.
 \paragraph{achterwaartse redeneermethode}Gebaseerd op het principe van bewijs door inconsistentie (zie \ref{sss:inconsistenceProof}) kunnen we dit algoritme versnellen, en dus een bewijs proberen op te stellen die met een zekere zin gedreven wordt, en niet door toeval. Hiervoor voegen we $\neg F$ toe aan $T$. We botsen echter op het probleem dat $\neg F$ geen geldige Clausale logica is, bijgevolg is het zeker geen Gegronde Horn Clausale Logica. Dit kunnen we echter omzeilen door niet $\neg F$ in te brengen in $T$, maar $\false\leftarrow F$. Hierbij zien we $\false$ als een predicaatsymbool die onder elke interpretatie onwaar is. Dit kunnen we formeel bewijzen, we stellen dat $F=\exists x_1\exists x_2\ldots\exists x_m\ B_1\wedge B_2\wedge\ldots\wedge B_n$. Met simpele manipulatie van de negatie van deze expressie bekomen we:
 \begin{equation}
 \neg\left(\exists x_1\exists x_2\ldots\exists x_m\ B_1\wedge B_2\wedge\ldots\wedge B_n\right)\Leftrightarrow\forall x_1\forall x_2\ldots\forall x_m\ \false\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_n
@@ -315,9 +316,10 @@ Indien we nu $F$ in zijn negatieve Horn Clause vorm zetten ($\false\leftarrow B_
 \UNTIL{$\neg \selectionpossible{T,B_i\leftarrow C_1\wedge C_2\wedge\ldots\wedge C_m,B_i\in\body{\goal}}\vee\goal=\false\leftarrow$}
 \end{algorithmic}
 \end{algorithm}
+
 Het probleem is dat dit algoritme niet altijd tot de oplossing komt, stel dat er verschillende expressies zijn waarmee we een zekere $B_i$ kunnen vervangen. In het geval dat we een foute kiezen, waardoor we niet ieder element in het lichaam van $\goal$ kunnen vervangen, zal het algoritme vastlopen. En op het moment dat er uiteindelijk geen vervanging meer mogelijk is, zal het stoppen, zonder resultaat. Dit impliceert echter niet dat er geen oplossingsmethode is. We zullen dus een Backtrackingsalgoritme rond dit algoritme moeten schrijven, dit kiest welke expressie we zullen gebruiken om de query te vervangen (regel 3 bij \algref{alg:backwardModusPonens} dus). Indien het algoritme dan na alle alternatieven te hebben uitgeprobeerd nog steeds nergens $\goal=\false\leftarrow$ tegenkwam, kunnen we stellen dat er geen inconsistentie in $T\cup\left\{\neg F\right\}$ zit, en kunnen we dus niet kunnen besluiten dat $F$ waar is.
 \paragraph{}
-Hoewel we door backtracking het omgekeerde verwachten is achterwaarts redeneren effici\"enter. We gaan immers geen regels meer toepassen die niets met $F$ te zien hebben. Bovendien bestaan er enkele regels die snel kunnen detecteren of een tak al dan niet gaat falen (zo moet voor ieder nieuw lid in het lichaam van $\goal$, een expressie bestaan die deze term opnieuw kan substitueren, in sommige gevallen is dit dan een feit). Dergelijke detectiesysteem wordt \termen{Atoom-selectie} genoemd, en kan meestal in de keuze betrokken worden.
+Hoewel we door backtracking het omgekeerde verwachten is achterwaarts redeneren efficiënter. We gaan immers geen regels meer toepassen die niets met $F$ te zien hebben. Bovendien bestaan er enkele regels die snel kunnen detecteren of een tak al dan niet gaat falen (zo moet voor ieder nieuw lid in het lichaam van $\goal$, een expressie bestaan die deze term opnieuw kan substitueren, in sommige gevallen is dit dan een feit). Dergelijke detectiesysteem wordt \termen{Atoom-selectie} genoemd, en kan meestal in de keuze betrokken worden.
 \paragraph{}Is dit algoritme volledig? Het antwoord is dat het afhangt van de backtrackingtechniek die gehanteerd wordt. Indien we bijvoorbeeld een stelsel opstellen:
 \begin{equation}
 \left\{\begin{array}{l}
@@ -346,12 +348,12 @@ Hieronder staan enkele voorbeelden van substituties:
 \paragraph{Substituties toepassen}
 Het toepassen van substituties op enkelvoudige expressies (atomen of termen) is zeer eenvoudig. Alle variabelen in de expressie die ook ergens aan de linkerkant van een koppel in de substitutie staan worden eenvoudigweg vervangen door wat er aan de rechterkant van deze term staat.
 \begin{leftbar}
-Dit wordt ge\"illustreerd met onderstaande voorbeelden:
+Dit wordt geïllustreerd met onderstaande voorbeelden:
 \begin{equation}
 \left\{\begin{array}{lll}
 \theta=\left\{x/g\left(z\right),y/B\right\}&p\left(x,f\left(y,z\right)\right)\cdot\theta=&p\left(g\left(z\right),f\left(B,z\right)\right)\\
 \varphi=\left\{x/h\left(g\left(A\right)\right),y/g\left(A\right),z/w\right\}&p\left(x,f\left(y,z\right)\right)\cdot\varphi=&p\left(h\left(g\left(A\right)\right),f\left(g\left(A\right),w\right)\right)\\
-\kappa=\left\{x/\Cesar,y/\Marcus\right\}&\mathfunc{pompei\"er}{x}\cdot\kappa=&\mathfunc{pompei\"er}{\Cesar}\\
+\kappa=\left\{x/\Cesar,y/\Marcus\right\}&\mathfunc{pompeiër}{x}\cdot\kappa=&\mathfunc{pompeiër}{\Cesar}\\
 \end{array}\right.
 \end{equation}
 \end{leftbar}
@@ -360,13 +362,13 @@ We willen substituties gebruiken om twee atomen in twee verschillende clauses ge
 \begin{theorem}
 Een substitutie $\theta$ is een unifier van een verzameling enkelvoudige expressies $S$ indien geldt: $S\cdot\theta$ is een \termen{singleton}.
 \end{theorem}
-We zijn echter enkel ge\"intresseerd in de Meest Algemene Unfier, dit is een unifier, die uiteraard nog een extra eigenschap heeft:
+We zijn echter enkel geïntresseerd in de Meest Algemene Unfier, dit is een unifier, die uiteraard nog een extra eigenschap heeft:
 \begin{theorem}
 Een unifier $\theta$ is een meest algemene unifier voor een verzameling enkelvoudige expressies $S$ indien voor iedere andere unifier $\varphi$ van $S$ er een substitutie $\sigma$ bestaat waarvoor geldt: $S\cdot\varphi=\left(S\cdot\theta\right)\cdot\sigma$
 \end{theorem}
-Het sleutelidee achter de Meest Algemene Unifier is dan ook om minimale instantiaties te cri\"eren, en dus geen overbodige substituties uit te voeren, of substituties naar zeer complexe termen terwijl dit eigenlijk niet nodig is. De Meest Algemene Unifier van een verzameling enkelvoudige expressies $S$ wordt genoteerd als $\mathfunc{mgu}{S}$, indien we de Meest Algemene Unfier van twee enkelvoudige expressies $A$ en $B$ nemen wordt dit ook genoteerd als $\theta=\mathfunc{mgu}{A,B}$. Er bestaat echter enkel een Meest Algemene Unifier tussen $A$ en $B$ indien deze hetzelfde predicaat hebben. Anders heeft de substitutie van variabelen immers geen zin, de twee expressies zullen telkens in predicaat verschillen, en de verzameling zal nooit herleid kunnen worden tot een singleton.
-\paragraph{\"Uberalgemene Modus Ponens}
-Nu we een unifier hebben gedefinieerd kunnen we de Verder Veralgemeende Modus Ponens verder veralgemenen. Hiervoor defini\"eren we de \termen{\"Uberalgemene Modus Ponens} als volgt:
+Het sleutelidee achter de Meest Algemene Unifier is dan ook om minimale instantiaties te creëren, en dus geen overbodige substituties uit te voeren, of substituties naar zeer complexe termen terwijl dit eigenlijk niet nodig is. De Meest Algemene Unifier van een verzameling enkelvoudige expressies $S$ wordt genoteerd als $\mathfunc{mgu}{S}$, indien we de Meest Algemene Unfier van twee enkelvoudige expressies $A$ en $B$ nemen wordt dit ook genoteerd als $\theta=\mathfunc{mgu}{A,B}$. Er bestaat echter enkel een Meest Algemene Unifier tussen $A$ en $B$ indien deze hetzelfde predicaat hebben. Anders heeft de substitutie van variabelen immers geen zin, de twee expressies zullen telkens in predicaat verschillen, en de verzameling zal nooit herleid kunnen worden tot een singleton.
+\paragraph{Überalgemene Modus Ponens}
+Nu we een unifier hebben gedefinieerd kunnen we de Verder Veralgemeende Modus Ponens verder veralgemenen. Hiervoor definiëren we de \termen{Überalgemene Modus Ponens} als volgt:
 \begin{equation}
 \begin{array}{lr}
 &A\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_i\wedge\ldots\wedge B_n\\
@@ -376,7 +378,8 @@ Nu we een unifier hebben gedefinieerd kunnen we de Verder Veralgemeende Modus Po
 \multicolumn{2}{c}{\theta=\mathfunc{mgu}{B_i,B_i'}}
 \end{array}
 \end{equation}
-Er is echter \'e\'en voorwaarde: $B_i$ en $B_i'$ moeten hetzelfde predicaat hebben, anders bestaat er eenvoudigweg geen Meest Algemene Unifier. Verder volgt de correctheid van deze formule uit de correctheid van de Verder Veralgemeende Modus Ponens. We kunnen immers eerst $\theta$ toepassen op de twee expressies. In dat geval bekomen we een geval volkomen identiek aan de Verder Veralgemeende Modus Ponens. Verder zullen we ook eerst de namen van de variabelen van de twee expressies aanpassen, alvorens we de \"Uberalgemene Modus Ponens toepassen, om \termen{clashes} met gelijknamige variabelen te vermijden. We kunnen nu \algref{alg:backwardModusPonens} uitbreiden zodat we ook met unifiers kunnen werken, hierdoor bekomen we \algref{alg:backwardUberalgemeneModusPonens}.
+
+Er is echter één voorwaarde: $B_i$ en $B_i'$ moeten hetzelfde predicaat hebben, anders bestaat er eenvoudigweg geen Meest Algemene Unifier. Verder volgt de correctheid van deze formule uit de correctheid van de Verder Veralgemeende Modus Ponens. We kunnen immers eerst $\theta$ toepassen op de twee expressies. In dat geval bekomen we een geval volkomen identiek aan de Verder Veralgemeende Modus Ponens. Verder zullen we ook eerst de namen van de variabelen van de twee expressies aanpassen, alvorens we de Überalgemene Modus Ponens toepassen, om \termen{clashes} met gelijknamige variabelen te vermijden. We kunnen nu \algref{alg:backwardModusPonens} uitbreiden zodat we ook met unifiers kunnen werken, hierdoor bekomen we \algref{alg:backwardUberalgemeneModusPonens}.
 \begin{algorithm}[htb]
 \caption{Achterwaardse oplossingsstrategie voor Horn Clause (met substitutie)}
 \label{alg:backwardUberalgemeneModusPonens}
@@ -389,6 +392,7 @@ Er is echter \'e\'en voorwaarde: $B_i$ en $B_i'$ moeten hetzelfde predicaat hebb
 \UNTIL{$\neg \selectionpossible{T,B_i'\leftarrow C_1\wedge C_2\wedge\ldots\wedge C_m,\exists B_i\in\body{\goal}\wedge\exists\theta=\mathfunc{mgu}{B_i,B_i'}}\vee\goal=\false\leftarrow$}
 \end{algorithmic}
 \end{algorithm}
+
 Uiteraard dienen we opnieuw een backtrackingsalgoritme rond deze implementatie te schrijven omdat we een foute keuze kunnen maken bij regel 3. Verder hangt de volledigheid van dit algoritme opnieuw af van de volledigheid van het zoekalgoritme (volledigheid met oneindig diepe takken). Een bijkomende vereiste is hierbij echter dat we bij de expressie eerst de variabelen hernoemen.
 \paragraph{Generatie van een Meest Algemene Unifier}
 Tot nu toe hebben we altijd de Meest Algemene Unifier beschouwd zonder ons af te vragen, hoe we deze kunnen vinden. Hiervoor is een speciaal algoritme nodig die met de invoer van twee enkelvoudige expressies $A$ en $B$ er in slaagt om een Meest Algemene Unfier te genereren. Hierbij vertrekken we van een substitutie $\mgut=\left\{A/B\right\}$. Uiteraard zal een dergelijke substitutie niet werken (strikt gezien is het geen substitutie, daar aan de linkerkant een variabele hoort te staan, en geen enkelvoudige expressie), immers horen de variabelen in andere element van de expressie ook vervangen te worden door de termen in de substitutie. Bijgevolg zal het algoritme stap voor stap dit koppel opdelen in meer koppels om te eindigen met een echte substitutie: de Meest Algemene Unifier. Dit algoritme wordt formeel beschreven in \algref{alg:genesisMgu}.
@@ -434,13 +438,14 @@ Tot nu toe hebben we altijd de Meest Algemene Unifier beschouwd zonder ons af te
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
+
 Dit algoritme wordt het \termen{Martelli-Montanari algoritme}\footnote{Naar Alberto Martelli en Ugo Montanari} genoemd in is verder uitbreidbaar voor meer dan twee expressies. Het algoritme kan stoppen omwille van twee redenen: ofwel zijn er geen regels meer toe te passen, in dat geval is $\stopt=\true$, anders is $\errort=\true$, in dat geval kunnen we geen Meest Algemene Unifier genereren.
 \begin{leftbar}
 Bij wijze van voorbeeld zullen we twee expressies met elkaar unificeren: $\mathfunc{kent}{\Cesar,x}$ en $\mathfunc{kent}{y,\mathfunc{moeder}{y}}$. Dit doen we stap per stap. We beginnen met deze expressies in de $\mgut$ te plaatsen:
 \begin{equation}
 \mgut_1=\left\{\mathfunc{kent}{\Cesar,x}/\mathfunc{kent}{y,\mathfunc{moeder}{y}}\right\}
 \end{equation}
-Vervolgens halen we de twee predicaten uiteen en instanti\"eren we de argumenten met elkaar:
+Vervolgens halen we de twee predicaten uiteen en instantiëren we de argumenten met elkaar:
 \begin{equation}
 \mgut_2=\left\{\Cesar/y,x/\mathfunc{moeder}{y}\right\}
 \end{equation}
@@ -448,7 +453,7 @@ We evalueren hier de elementen van links naar rechts. Het eerste element dient o
 \begin{equation}
 \mgut_3=\left\{y/\Cesar,x/\mathfunc{moeder}{y}\right\}
 \end{equation}
-Nu we het eerste element op de juiste manier ge\"instantieerd hebben, zullen we deze substitutie toepassen op de andere elementen:
+Nu we het eerste element op de juiste manier geïnstantieerd hebben, zullen we deze substitutie toepassen op de andere elementen:
 \begin{equation}
 \mgut_4=\left\{y/\Cesar,x/\mathfunc{moeder}{\Cesar}\right\}
 \end{equation}
@@ -464,7 +469,7 @@ Eenmaal we deze toestand bereikt hebben, valt er niets meer aan te passen. We he
 \forall x_1,\forall x_2\ldots,\forall x_k\ A_i\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_n\wedge\neg A_1\wedge\neg A_2\wedge\ldots\neg A_{i-1}\wedge\neg A_{i+1}\wedge\ldots\wedge A_m
 \end{array}
 \end{equation}
-Omdat negaties echter niet toegestaan zijn in de Clausale vorm, en er verder geen algemeen algoritme bestaat die de negatie van een bepaalde uitdrukking kan berekenen (en inwendige negatie soms onmogelijk kan zijn), zullen we dit probleem op een andere manier moeten oplossen. Daarom veralgemenen we verder de oorzaak van het probleem: De \"Uberalgemene Modus Ponens. Omdat het resultaat eigenlijk de geest van de Modus Ponens-regel niet meer bevat spreken we vanaf nu van een Resolutie. De resolutie wordt gedefinieerd als:
+Omdat negaties echter niet toegestaan zijn in de Clausale vorm, en er verder geen algemeen algoritme bestaat die de negatie van een bepaalde uitdrukking kan berekenen (en inwendige negatie soms onmogelijk kan zijn), zullen we dit probleem op een andere manier moeten oplossen. Daarom veralgemenen we verder de oorzaak van het probleem: De Überalgemene Modus Ponens. Omdat het resultaat eigenlijk de geest van de Modus Ponens-regel niet meer bevat spreken we vanaf nu van een Resolutie. De resolutie wordt gedefinieerd als:
 \begin{equation}
 \begin{array}{lr}
 &A_1\vee A_2\vee\ldots\vee A_m\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_i\wedge\ldots\wedge B_n\\
@@ -475,8 +480,8 @@ Omdat negaties echter niet toegestaan zijn in de Clausale vorm, en er verder gee
 \multicolumn{2}{c}{\theta=\mathfunc{mgu}{B_i,B_i'}}
 \end{array}
 \end{equation}
-De resolutie is te bewijzen door alle $C$-elementen door middel van negatie naar het lichaam van de expressie te brengen. Vervolgens passen we de \"Uberalgemene Modus Ponens toe, op de twee expressies, en kunnen we de negaties weer terug naar het hoofd van de bekomen expressie schuiven. Een andere mogelijkheid is om de expressies om te zetten in een conjunctieve normaalvorm. Vervolgens de conjunctie van de twee expressies te nemen, om daarna terug naar de implicatieve vorm te gaan.
-\paragraph{Factoring}De resolutie introduceert echter een nieuw probleem. We dreigen in onze expressie kopie\"en te generen van atomen, of afwijkende atomen die onder substitutie met de Meest Algemene Unifier equivalent worden. We dienen dus situaties als de volgende te vermijden waarbij er een Meest Algemene Unifier $\exists\theta=\mathfunc{mgu}{B_i,B_i'}$ of $\exists\varphi=\mathfunc{mgu}{A_i,A_i'}$ bestaat:
+De resolutie is te bewijzen door alle $C$-elementen door middel van negatie naar het lichaam van de expressie te brengen. Vervolgens passen we de Überalgemene Modus Ponens toe, op de twee expressies, en kunnen we de negaties weer terug naar het hoofd van de bekomen expressie schuiven. Een andere mogelijkheid is om de expressies om te zetten in een conjunctieve normaalvorm. Vervolgens de conjunctie van de twee expressies te nemen, om daarna terug naar de implicatieve vorm te gaan.
+\paragraph{Factoring}De resolutie introduceert echter een nieuw probleem. We dreigen in onze expressie kopieën te generen van atomen, of afwijkende atomen die onder substitutie met de Meest Algemene Unifier equivalent worden. We dienen dus situaties als de volgende te vermijden waarbij er een Meest Algemene Unifier $\exists\theta=\mathfunc{mgu}{B_i,B_i'}$ of $\exists\varphi=\mathfunc{mgu}{A_i,A_i'}$ bestaat:
 \begin{equation}
 \left\{\begin{array}{c}
 A_1\vee A_2\vee\ldots A_m\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_i\wedge\ldots\wedge B_i'\wedge\ldots\wedge B_n\\
@@ -495,9 +500,9 @@ Een nieuwe deductieregel genaamd \termen{Factoring} rekent met deze problemen af
 \multicolumn{2}{c}{\theta=\mathfunc{mgu}{B_i,B_i'}}
 \end{array}
 \end{equation}
-Hierbij rekenen we $\false$ niet als een atoom. Indien we dus een inconsistentie willen aantonen moeten we vroeg of laat een expressie bekomen van lengte 0 ($\false\leftarrow$). We kunnen er echter vanuit gaan dat zowel $M\geq1$ als $N\geq1$. Alleen wanneer we dus twee expressies combineren door resulutie waarbij het eerste van de vorm $\false\leftarrow p$ en het tweede van de vorm $p\leftarrow$ is, kunnen we doormiddel van resolutie de inconsistentie bewijzen. In alle andere gevallen (waar we waarschijnlijk meer in ge\"intresseerd zijn) zal het algoritme nooit tot een oplossing komen.
+Hierbij rekenen we $\false$ niet als een atoom. Indien we dus een inconsistentie willen aantonen moeten we vroeg of laat een expressie bekomen van lengte 0 ($\false\leftarrow$). We kunnen er echter vanuit gaan dat zowel $M\geq1$ als $N\geq1$. Alleen wanneer we dus twee expressies combineren door resulutie waarbij het eerste van de vorm $\false\leftarrow p$ en het tweede van de vorm $p\leftarrow$ is, kunnen we doormiddel van resolutie de inconsistentie bewijzen. In alle andere gevallen (waar we waarschijnlijk meer in geïntresseerd zijn) zal het algoritme nooit tot een oplossing komen.
 \paragraph{}
-Daarom defini\"eren we twee nieuwe deductieregels, die de problemen in vergelijking \ref{eqn:factoringProblems} oplossen:
+Daarom definiëren we twee nieuwe deductieregels, die de problemen in vergelijking \ref{eqn:factoringProblems} oplossen:
 \begin{equation}
 \begin{array}{lr}
 \therefore&A_1\vee A_2\vee\ldots\vee A_m\leftarrow B_1\wedge B_2\wedge\ldots\wedge B_i\wedge\ldots\wedge B_i'\wedge\ldots\wedge B_n\\
@@ -512,7 +517,7 @@ Daarom defini\"eren we twee nieuwe deductieregels, die de problemen in vergelijk
 \end{array}
 \end{equation}
 \paragraph{Algemene Implementatie}
-Nu we in staat zijn om theori\"en op te lossen, kunnen we een algemeen algoritme bouwen, die in staat is de inconsistentie van ons gewijzigde theorie ($S=T\cup\left\{\false\leftarrow F\right\}$) aan te tonen. Dit algoritme beschrijven we in \algref{alg:resolutionSolver}.
+Nu we in staat zijn om theoriën op te lossen, kunnen we een algemeen algoritme bouwen, die in staat is de inconsistentie van ons gewijzigde theorie ($S=T\cup\left\{\false\leftarrow F\right\}$) aan te tonen. Dit algoritme beschrijven we in \algref{alg:resolutionSolver}.
 \begin{algorithm}[htb]
 \caption{Generatie van de Meest Algemene Unifier $\mathcommand{mgu}{A,B}$}
 \label{alg:resolutionSolver}
@@ -533,11 +538,12 @@ Nu we in staat zijn om theori\"en op te lossen, kunnen we een algemeen algoritme
 \ENDWHILE
 \end{algorithmic}
 \end{algorithm}
-Merk op dat hierbij het lineare karakter verloren gaat. Onder Horn Clause (\algref{alg:backwardUberalgemeneModusPonens}) vertrokken we vanuit $\goal:=\false\leftarrow F$, en combineerden we deze expressie voortdurend met andere expressies, waardoor we een nieuw doel bekwamen. Bij het algoritme met de resolutie, wordt het doel niet altijd betrokken in de functie. De Clausale resolutie is dan ook niet linear en kan soms heel wat expressies met elkaar combineren die uiteindelijk helemaal niets opleveren. Dit maakt dit algoritme erg oneffici\"ent. Bovendien krijgt het het een erg non-deterministisch karakter (vooral door het $\select{}$ statement). Een bewijs is immers niet meer een lineare tak, maar een deel van de impliciet gegenereerde graaf. Omdat we in principe op situaties kunnen botsen waarbij we zo oneindig veel expressies genereren, kunnen we ons de vraag stellen of dit algoritme volledig is of niet. Er bestaat in ieder geval een implementatie, de \termen{Herbrand Stellingbewijzer}\footnote{Genoemd naar Jacques Herbrand (1908-1931).}, die een volledige zoekstrategie voor dit problemen teruggeeft.
+
+Merk op dat hierbij het lineare karakter verloren gaat. Onder Horn Clause (\algref{alg:backwardUberalgemeneModusPonens}) vertrokken we vanuit $\goal:=\false\leftarrow F$, en combineerden we deze expressie voortdurend met andere expressies, waardoor we een nieuw doel bekwamen. Bij het algoritme met de resolutie, wordt het doel niet altijd betrokken in de functie. De Clausale resolutie is dan ook niet linear en kan soms heel wat expressies met elkaar combineren die uiteindelijk helemaal niets opleveren. Dit maakt dit algoritme erg onefficiënt. Bovendien krijgt het het een erg non-deterministisch karakter (vooral door het $\select{}$ statement). Een bewijs is immers niet meer een lineare tak, maar een deel van de impliciet gegenereerde graaf. Omdat we in principe op situaties kunnen botsen waarbij we zo oneindig veel expressies genereren, kunnen we ons de vraag stellen of dit algoritme volledig is of niet. Er bestaat in ieder geval een implementatie, de \termen{Herbrand Stellingbewijzer}\footnote{Genoemd naar Jacques Herbrand (1908-1931).}, die een volledige zoekstrategie voor dit problemen teruggeeft.
 Verder kunnen we concluderen dat deze methode correct is. Enkel indien $\inconsistent=\true$ heeft het algoritme resultaat, in dat geval weten we dat $\false\leftarrow$ ergens toegevoegd is aan $S$. Aangezien onze resolutiestap correct is, weten we bijgevolg ook dat deze expressie correct is, en dat alle modellen van $S$ deze expressie vroeg of laat zullen toevoegen. Bijgevolg kunnen we stellen dat $S$ geen modellen heeft. Indien het algoritme stopt omwille van $\consistent=\true$, dan weten we dat het algoritme alle mogelijkheden heeft geprobeerd. Immers alle combinaties die nog niet geprobeerd werden, worden uitgevoerd, maar $\false\leftarrow$ wordt eenvoudigweg niet bereikt. Indien de theorie toch inconsistent zou zijn, zou een volledige strategie deze vroeg of laat moeten ontdekken wat dus niet gebeurt. Gebaseerd op de kleinste-model semantiek kunnen we besluiten dat $F$ niet klopt.
 \subsubsection{Resolutie bewijzen}
 \label{sss:resolutionProof}
-Hoe bewijzen we nu de inconsistentie in onze gemodificeerde theorie $T'$ (waarbij we $\false\leftarrow F$ hebben toegevoegd)? We kunnen de inconsistentie aantonen door twee expressies uit $T'$ te nemen, waar resolutie op mogelijk is. In dat geval voeren we de resolutie uit tussen die twee expressies, en voegen het resultaat toe aan $T'$ samen met de twee oorspronkelijke expressies. Indien de resolutie resulteert in de expressie $\false\leftarrow$ hebben we een inconsistentie gevonden. Bijgevolg kunnen we zeggen dat de laatste set $T'$ inconsistent is, omdat deze set equivalent is met de initi\"ele gemodificeerde set $T'$ kunnen we zeggen dat $T'$ inconsistent is in het algemeen. En dit impliceert bijgevolg $T\vDash F$.
+Hoe bewijzen we nu de inconsistentie in onze gemodificeerde theorie $T'$ (waarbij we $\false\leftarrow F$ hebben toegevoegd)? We kunnen de inconsistentie aantonen door twee expressies uit $T'$ te nemen, waar resolutie op mogelijk is. In dat geval voeren we de resolutie uit tussen die twee expressies, en voegen het resultaat toe aan $T'$ samen met de twee oorspronkelijke expressies. Indien de resolutie resulteert in de expressie $\false\leftarrow$ hebben we een inconsistentie gevonden. Bijgevolg kunnen we zeggen dat de laatste set $T'$ inconsistent is, omdat deze set equivalent is met de initiële gemodificeerde set $T'$ kunnen we zeggen dat $T'$ inconsistent is in het algemeen. En dit impliceert bijgevolg $T\vDash F$.
 \subsubsection{Normalisatie}
 \label{sss:normalisation}
 Zoals reeds vermeld kunnen we iedere expressie in eerste-orde predicatenlogica omzetten naar Clausale logica. Bijgevolg hebben we dus geen extra componenten meer nodig om tot een oplossingsstrategie te komen, deze kan nu immers alle problemen oplossen. Door die equivalentie kunnen we dus stellen dat:
@@ -562,11 +568,11 @@ Nu we een conjunctie van disjunties bereikt hebben, moeten we de quantoren zien 
 \left(Q_1\ x_1\right)\left(Q_2\ x_2\right)\ldots\left(Q_l\ x_l\right)\ \left(A_1\vee A_2\vee\ldots\vee A_n\right)\wedge\left(B_1\vee B_2\vee\ldots\vee B_m\right)\wedge\ldots\wedge\left(C_1\vee C_2\vee\ldots\vee C_k\right)
 \end{equation}
 Hierbij zijn de $Q_i$'s ofwel een $\forall$ ofwel $\exists$ karakter.
-\paragraph{}De Clausale logica laat echter maar \'e\'en quantor toe: $\forall$. We moeten dus de de $\exists$ kunnen elimineren. Indien deze onafhankelijk zijn van de rest van de expressie, is er in principe niet echt een probleem. Onder het \termen{``Geef het kind een naam''-principe} vervangen we gewoon de variabele door een constante (een \termen{skolem constante}). Indien we echter met geneste quantoren te maken hebben wordt de situatie complexer. Indien we bijvoorbeeld de volgende vergelijking hebben:
+\paragraph{}De Clausale logica laat echter maar één quantor toe: $\forall$. We moeten dus de de $\exists$ kunnen elimineren. Indien deze onafhankelijk zijn van de rest van de expressie, is er in principe niet echt een probleem. Onder het \termen{``Geef het kind een naam''-principe} vervangen we gewoon de variabele door een constante (een \termen{skolem constante}). Indien we echter met geneste quantoren te maken hebben wordt de situatie complexer. Indien we bijvoorbeeld de volgende vergelijking hebben:
 \begin{equation}
 \forall x\exists y\ \mathfunc{mens}{x}\rightarrow\mathfunc{hart}{y}\wedge\mathfunc{heeft}{x,y}
 \end{equation}
-Hierbij kunnen we $y$ niet zomaar door een hart vervangen, anders zou dit betekenen dat iedere persoon met hetzelfde hart rondloopt! In dat geval dienen we een \termen{skolem functie} te defini\"eren, deze functie bezit evenveel parameters als $\forall$-quantoren waarin het omsloten is. We lossen dus het bovenstaande probleem op met een skolem-functie $H$:
+Hierbij kunnen we $y$ niet zomaar door een hart vervangen, anders zou dit betekenen dat iedere persoon met hetzelfde hart rondloopt! In dat geval dienen we een \termen{skolem functie} te definiëren, deze functie bezit evenveel parameters als $\forall$-quantoren waarin het omsloten is. We lossen dus het bovenstaande probleem op met een skolem-functie $H$:
 \begin{equation}
 \forall x\ \mathfunc{mens}{x}\rightarrow\mathfunc{hart}{H\left(x\right)}\wedge\mathfunc{heeft}{x,H\left(x\right)}
 \end{equation}
@@ -585,7 +591,7 @@ Om vervolgens tot een implicatief formaat te komen brengen we vervolgens alle ne
 A_1\vee A_2\vee\ldots\vee\neg A_i\vee\ldots\vee A_n\Rightarrow A_1\vee A_2\vee A_{i-1}\vee A_{i+1}\vee\ldots\vee A_n\leftarrow A_i
 \end{equation}
 
-\paragraph{Volledige Procedure} Indien we nu alle stappen samenvatten in \'e\'en procedure bekomen we het volgende stappenplan (dit kan ge\"implementeerd worden in een algoritme, en dus machinaal omgevormd worden):
+\paragraph{Volledige Procedure} Indien we nu alle stappen samenvatten in één procedure bekomen we het volgende stappenplan (dit kan geïmplementeerd worden in een algoritme, en dus machinaal omgevormd worden):
 \begin{enumerate}
  \item Zet $\leftrightarrow$ om in $\rightarrow$: $p\leftrightarrow q\Rightarrow p\rightarrow q\wedge q\rightarrow p$
  \item Zet $\rightarrow$ om naar zijn disjunctie vorm: $p\rightarrow q\Rightarrow \neg p\vee q$
@@ -641,8 +647,8 @@ Indien we het volledige systeem normaliseren bekomen we volgende theorie $T$:
 T=\left\{
 \begin{array}{l}
 \mathfunc{man}{\Marcus}\\
-\mathfunc{pompei\"er}{\Marcus}\\
-\mathfunc{romein}{x}\leftarrow\mathfunc{pompei\"er}{x}\\
+\mathfunc{pompeiër}{\Marcus}\\
+\mathfunc{romein}{x}\leftarrow\mathfunc{pompeiër}{x}\\
 \mathfunc{heerser}{\Cesar}\\
 \mathfunc{loyaalAan}{x,\Cesar}\vee\mathfunc{probeerTeVermoorden}{x,\Cesar}\leftarrow\mathfunc{romein}{x}\\
 \false\leftarrow\mathfunc{romein}{x}\wedge\mathfunc{loyaalAan}{x,\Cesar}\wedge\mathfunc{probeerTeVermoorden}{x,\Cesar}\\
@@ -662,35 +668,35 @@ Naast het bewijzen van stellingen worden Automatische Redeneersystemen ook gebru
 \end{itemize}
 Deze aspecten worden in de volgende subsubsecties behandeld.
 \subsubsection{Antwoord Substituties}
-Meestal zijn we in een programma niet ge\"intresseerd of onze stelling $F$ klopt, maar willen we een concrete situatie terugkrijgen waarin $F$ klopt. In de meeste gevallen willen we zelfs alle mogelijke antwoorden terugkrijgen. Hierdoor vormen Logische Programmeertalen de bais van enkele General Purpose Programmeertalen zoals Prolog, XSB en Haskell. In theorie kunnen deze talen zelfs resultaten teruggeven met een effici\"entie gelijkaardig of zelfs sneller dan C. Een praktijkvoorbeeld bij een project leert echter dat dergelijke talen er makkelijk een zevenvoud aan tijd voor nodig hebben in verhouding tot objectgerichte talen!
+Meestal zijn we in een programma niet geïntresseerd of onze stelling $F$ klopt, maar willen we een concrete situatie terugkrijgen waarin $F$ klopt. In de meeste gevallen willen we zelfs alle mogelijke antwoorden terugkrijgen. Hierdoor vormen Logische Programmeertalen de basis van enkele General Purpose Programmeertalen zoals Prolog, XSB en Haskell. In theorie kunnen deze talen zelfs resultaten teruggeven met een efficiëntie gelijkaardig of zelfs sneller dan C. Een praktijkvoorbeeld bij een project leert echter dat dergelijke talen er makkelijk een zevenvoud aan tijd voor nodig hebben in verhouding tot objectgerichte talen!
 \paragraph{}Hieronder volgt een concreet voorbeeld die de werking van Antwoord Substitutie illustreert. Hierbij is onze theorie
 \begin{equation}
 \left\{\begin{array}{l}
 \mathfunc{dubbelPlus1}{x,y}\leftarrow y=2\cdot x+1
 \end{array}\right.
 \end{equation}
-Indien we volgende expressie invoeren in een Automatisch Redeneersysteem, zal dit enkel antwoorden met ``$\true$''. Meestal zijn we hier echter niet in ge\"intresseerd, en willen we de waarde van $z$ kennen. Een logische programmeertaal zal dan ook antwoorden met ``$\true, z=11$'':
+Indien we volgende expressie invoeren in een Automatisch Redeneersysteem, zal dit enkel antwoorden met ``$\true$''. Meestal zijn we hier echter niet in geïntresseerd, en willen we de waarde van $z$ kennen. Een logische programmeertaal zal dan ook antwoorden met ``$\true, z=11$'':
 \begin{equation}
 \false\leftarrow\mathfunc{dubbelPlus1}{5,z}
 \end{equation}
 \subsubsection{Kleinste Model Semantiek}
 Indien uit een theorie $T$ niet volgt dat $F$, dan zal volgens de klassieke Eerste Orde Logica het resultaat zijn dat we het eenvoudig niet kunnen weten. Het idee van de Kleinste Model Logica is dat indien we iets niet weten, we er eenvoudigweg van uitgaan dat het niet waar is. Concreet betekent dit dus dat het model in Eerste Orde Logica zegt dat we weten wat we weten en daarbuiten we niets weten. Logisch Programmeren gaat er vanuit dat alles wat we niet weten per definitie niet waar is. Hierdoor kunnen uiteraard vreemde situaties ontstaan waarbij zowel $T\vDash F$ als $T\vDash\neg F$ allebei als $\false$ worden beoordeeld.
 \paragraph{}Dergelijke filosofie wordt ook wel de \termen{Gesloten Wereld Assumptie} genoemd. Het is een compacte manier om \termen{Volledige Kennis} over iets uit te drukken (we gaan er immers vanuit dat er naast de theorie $T$, in de wereld geen kennis bestaat). En dus indien niet gezegd werd dat iets waar is, het per definitie niet waar is. Logisch programmeren ondersteund dan ook het formuleren van definities van je concepten. Alles wat niet aan de definities beantwoord kan dan niet aan het concept voldoen. Dit gaat in tegen het \termen{Monotoniciteitsprincipe} dat zegt dat we alleen maar iets mogen zeggen waarover we iets weten.
-\paragraph{Voordeel}Deze assumptie mag vreemd lijken, maar laat ons toe om concepten volledige te \termen{axiomatiseren}. In Logisch Programmeren kunnen immers de natuurlijke getallen volledig geaxiomatiseerd worden. Iets wat niet in Eerste Orde Logica kan (door de Onvolledigheidsstelling van Kurt G\"odel).
+\paragraph{Voordeel}Deze assumptie mag vreemd lijken, maar laat ons toe om concepten volledige te \termen{axiomatiseren}. In Logisch Programmeren kunnen immers de natuurlijke getallen volledig geaxiomatiseerd worden. Iets wat niet in Eerste Orde Logica kan (door de Onvolledigheidsstelling van Kurt Gödel).
 \subsubsection{Negatie als Eindige Faling}
 In grote lijnen komt de representatiekracht van Logisch Programmeren overeen met Horn Clausale Logica. Een poging om hieraan te ontsnappen is de Negatie als Eindige Faling. Hierbij breiden we de representatiekracht uit met volgende items:
 \begin{itemize}
  \item Disjuncties ($\vee$) worden toegelaten in de hoofden
  \item Negaties ($\neg$) in de atomen van het lichaam
 \end{itemize}
-Indien we ons de beperkingen van de Horn Clausale Logica herinneren lijkt het alsof we de taal uitgebreid hebben naar de volledige eerste orde logica. Bovendien hoeft men maar \'e\'en van de twee regels toe te laten (deze zijn immers equivalent aan elkaar). Omdat we echter werken met de Kleinste Model Semantiek zullen we toch een situatie bekomen die er enigsinds anders uitziet.
+Indien we ons de beperkingen van de Horn Clausale Logica herinneren lijkt het alsof we de taal uitgebreid hebben naar de volledige eerste orde logica. Bovendien hoeft men maar één van de twee regels toe te laten (deze zijn immers equivalent aan elkaar). Omdat we echter werken met de Kleinste Model Semantiek zullen we toch een situatie bekomen die er enigsinds anders uitziet.
 \paragraph{}
 De negatie van een bepaald atoom betekent hier immers niet de standaard negatie (zoals deze voorgesteld wordt in een waarheidstabel). De negatie van een bepaald atoom is waar in de Kleinste Model Semantiek indien alle pogingen om dat atoom te bewijzen falen. Of formeler gesteld:
 \begin{theorem}
-Als alle pogingen om $B$ te bewijzen, gebruik makend van de \termen{Linear Programming Resolutie} (gelijkaardig aan de \"Uberalgemene Modus Ponens) na eindige tijd allemaal falen, besluiten we $\neg B$.
+Als alle pogingen om $B$ te bewijzen, gebruik makend van de \termen{Linear Programming Resolutie} (gelijkaardig aan de Überalgemene Modus Ponens) na eindige tijd allemaal falen, besluiten we $\neg B$.
 \end{theorem}
 Concreet betekent dit dus dat indien we een theorie $T=\left\{A\leftarrow\neg B\right\}$ hebben, en we willen $\false\leftarrow A$ bewijzen. Het algoritme ``$\true$'' zal teruggeven. We weten immers niets over $B$, dus redeneert Linear Programming weten we dat $\neg B$ klopt, en dus klopt $A$.
 \subsubsection{Combinatie van Eerste-Orde Logica en Logisch Programmeren}
 Logisch Programmeren is dus heel nuttig indien we volledig kennis hebben over onze concepten. Eerste Orde Logica is nuttig indien we beperkte kennis hebben. Het komt er dus op aan om de twee te combineren. Dit resulteert in \termen{Open Logisch Programmeren}, hierbij is het de bedoeling dat we Logisch Programmeren indien we volledige kennis hebben over het concept. Indien we een concept behandelen waar we onvolledige kennis van hebben, zoeken we onze toevlucht tot Eerste Orde Logica.
 \subsubsection{Constraint Logic Programming}
-Meestal worden heel wat technieken uit Constraint Processing gebruikt bij logisch programmeren (zoals bijvoorbeeld Backtracking). In dat geval spreken we over \termen{Constraint Logic Programming}. Dit concept bied het beste uit de twee werelden. Zo is het vaak eenvoudiger om kennis in logica uit te drukken, dan met constraints. Anderzijds erven we de effici\"entie van Constraint Processing over. Er zijn dan ook al heel wat talen hierop gebaseerd zoals: CHIP, Prolog III, Eclipse,...
+Meestal worden heel wat technieken uit Constraint Processing gebruikt bij logisch programmeren (zoals bijvoorbeeld Backtracking). In dat geval spreken we over \termen{Constraint Logic Programming}. Dit concept bied het beste uit de twee werelden. Zo is het vaak eenvoudiger om kennis in logica uit te drukken, dan met constraints. Anderzijds erven we de efficiëntie van Constraint Processing over. Er zijn dan ook al heel wat talen hierop gebaseerd zoals: CHIP, Prolog III, Eclipse,\dots

@@ -8,7 +8,7 @@ We kunnen een zoekmethode evalueren op volgende criteria:
  \item \termen{Completeness}: vindt het algoritme altijd een oplossing (indien er een oplossing bestaat)
  \item \termen{Speed}: de worst-case tijdscomplexiteit
  \item \termen{Memory}: de worst-case geheugencomplexiteit
- \item \termen{Optimaliteit}: zoeken we de optimale oplossing, of is \'e\'en oplossing voldoende
+ \item \termen{Optimaliteit}: zoeken we de optimale oplossing, of is één oplossing voldoende
 \end{itemize}
 Voor complexiteitsanalyses zullen we gebruikmaken van onderstaande parameters:
 \begin{itemize}
@@ -227,9 +227,9 @@ Als overgangsregels beschouwen we iedere weg naar iedere stad die we tot dan toe
 Als heuristiek (zie \ref{sss:heuristicFunction}) nemen we tot slot de afstand in vogelvlucht tussen de stad in kwestie, en $G$ zelf. Deze wordt in het grijs op het wegenplan aangegeven. We zullen in deze sectie heel wat zoekalgoritmen uitvoeren op deze boom, om zo de concrete werking te verduidelijken. Deze afbeeldingen staan niet in de tekst zelf, maar staan in \ref{ss:cityFigures} op pagina \pageref{ss:cityFigures}.
 \end{leftbar}
 \subsection{Blind Search Methods}
-Indien we geen specifieke kennis over het probleem hebben, of deze te complex/lastig is om te formuleren kunnen we een \termen{Blind Search Method} gebruiken. Het is evident dat zoeken zonder probleemgerelateerde informatie ineffici\"ent is. Bij deze methodes zijn we ook niet ge\"interesseerd in de optimale oplossing.
+Indien we geen specifieke kennis over het probleem hebben, of deze te complex/lastig is om te formuleren kunnen we een \termen{Blind Search Method} gebruiken. Het is evident dat zoeken zonder probleemgerelateerde informatie inefficiënt is. Bij deze methodes zijn we ook niet geïnteresseerd in de optimale oplossing.
 \subsubsection{Depth-First Search}
-Bij \termen{Depth-First Search} of \termen{Diepte-eerst zoeken} volgen we een bepaalde productieregel vanaf de begintoestand. Vervolgens blijven we deze regel recursief toepassen tot we vast zitten. Indien we een doel gevonden hebben is het algoritme ten einde. Indien het niet het doel is, zal het algoritme de laatste productieregel ongedaan maken en een andere in de plaats stellen. Indien er geen ongebruikte regels meer voor handen zijn maken we de regels daarvoor ongedaan tot we terug een regel kunnen kiezen. Een andere naam hiervoor is \termen{Chronological Backtracking}. Deze zoekmethode wordt ge\"illustreerd in \algref{alg:depthFirst}. We voorkomen dat we in een lus terechtkomen (indien de productieregel dit toelaten) door telkens we een toestand genereren te controleren of \'e\'en van zijn voorouders identiek aan die toestand is. Indien dit zo is, zullen we die toestand niet meer verder evalueren. Dit systeem noemen we \termen{Loopdetectie}.
+Bij \termen{Depth-First Search} of \termen{Diepte-eerst zoeken} volgen we een bepaalde productieregel vanaf de begintoestand. Vervolgens blijven we deze regel recursief toepassen tot we vast zitten. Indien we een doel gevonden hebben is het algoritme ten einde. Indien het niet het doel is, zal het algoritme de laatste productieregel ongedaan maken en een andere in de plaats stellen. Indien er geen ongebruikte regels meer voor handen zijn maken we de regels daarvoor ongedaan tot we terug een regel kunnen kiezen. Een andere naam hiervoor is \termen{Chronological Backtracking}. Deze zoekmethode wordt geïllustreerd in \algref{alg:depthFirst}. We voorkomen dat we in een lus terechtkomen (indien de productieregel dit toelaten) door telkens we een toestand genereren te controleren of één van zijn voorouders identiek aan die toestand is. Indien dit zo is, zullen we die toestand niet meer verder evalueren. Dit systeem noemen we \termen{Loopdetectie}.
 \begin{algorithm}[htb]
 \caption{Depth-First zoekalgoritme}
 \label{alg:depthFirst}
@@ -249,11 +249,11 @@ Bij \termen{Depth-First Search} of \termen{Diepte-eerst zoeken} volgen we een be
 \end{algorithmic}
 \end{algorithm}
 \paragraph{Complexiteiten}
-We zullen nu de tijd- en geheugencomplexiteit voor Depth-First analyseren. Hierbij zullen we systemen zoals het loopdetectie systeem buiten beschouwing laten. We gaan er dus vanuit dat we een pad analyseren in \bigoh{1}. Dit is uiteraard niet het geval, en zal in andere algoritmes zelfs oplopen tot lange procedures. We zijn dus meer ge\"interesseerd in het aantal maal we de while-lus uitvoeren, en beschouwen dit als tijdscomplexiteit. 
+We zullen nu de tijd- en geheugencomplexiteit voor Depth-First analyseren. Hierbij zullen we systemen zoals het loopdetectie systeem buiten beschouwing laten. We gaan er dus vanuit dat we een pad analyseren in \bigoh{1}. Dit is uiteraard niet het geval, en zal in andere algoritmes zelfs oplopen tot lange procedures. We zijn dus meer geïnteresseerd in het aantal maal we de while-lus uitvoeren, en beschouwen dit als tijdscomplexiteit. 
 \paragraph{}
 Indien we dit toepassen op Depth-First stellen we vast dat we een tijdscomplexiteit van \bigoh{b^d} uitkomen. Vrij vertaald betekent dit dus dat we de volledige boom doorlopen. Dit is te beargumenteren: stel dat de oplossing zich in de meest rechtse tak bevindt. In dat geval, zal Depth-First eerst alle andere paden van links naar rechts doorlopen. Het maakt niet zoveel uit op welke diepte de oplossing zich bevindt (indien niet onmiddellijk onder de wortel). Deze eigenschap kan ook de compleetheid van het algoritme ook in gevaar brengen. Indien we met een oneindig diepe boom te maken hebben. Waarbij we telkens verder op een bepaalde knoop kunnen produceren, zal het algoritme nooit stoppen. We moeten dus over productieregels beschikken die vroeg of laat ieder pad doen stoppen, om dit algoritme volledig te doen werken.
 \paragraph{}
-Het geheugengebruik van Depth-First is beter. Op ieder niveau is op ieder moment hooguit \'e\'en knoop ge\"expandeert, bijgevolg zitten er in de $\queue$ hooguit \bigoh{b\cdot d} knopen. Namelijk per diepte $b$ verschillende knopen.	
+Het geheugengebruik van Depth-First is beter. Op ieder niveau is op ieder moment hooguit één knoop geëxpandeert, bijgevolg zitten er in de $\queue$ hooguit \bigoh{b\cdot d} knopen. Namelijk per diepte $b$ verschillende knopen.	
 \paragraph{}
 Indien we dit samenvatten bekomen we volgende criteria:
 \begin{center}
@@ -268,7 +268,7 @@ Indien we dit samenvatten bekomen we volgende criteria:
 We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:depthFirstCity} op pagina \pageref{fig:depthFirstCity}.
 \end{leftbar}
 \subsubsection{Breadth-First Search}
-Bij \termen{Breadth-First Search} of de \termen{Breedte-eerst zoeken} zoekmethode wordt een laag aan oplossingen afgewerkt alvorens er een nieuwe laag wordt bekeken. Concreet betekent dit dus dat de kinderen van een ge\"evalueerde knoop achteraan in een wachtrij geplaatst worden, en dus pas behandeld worden wanneer alle andere knopen van dezelfde boom toegevoegd zijn. Dit wordt ge\"illustreerd in \algref{alg:breadthFirst}.
+Bij \termen{Breadth-First Search} of de \termen{Breedte-eerst zoeken} zoekmethode wordt een laag aan oplossingen afgewerkt alvorens er een nieuwe laag wordt bekeken. Concreet betekent dit dus dat de kinderen van een geëvalueerde knoop achteraan in een wachtrij geplaatst worden, en dus pas behandeld worden wanneer alle andere knopen van dezelfde boom toegevoegd zijn. Dit wordt geïllustreerd in \algref{alg:breadthFirst}.
 \begin{algorithm}[htb]
 \caption{Breadth-First zoekalgoritme}
 \label{alg:breadthFirst}
@@ -288,9 +288,9 @@ Bij \termen{Breadth-First Search} of de \termen{Breedte-eerst zoeken} zoekmethod
 \end{algorithmic}
 \end{algorithm}
 \paragraph{Complexiteiten}
-In tijdscomplexiteit is een breedte eerst benadering in de meeste gevallen beter. Het algoritme zal immers alleen de boom expanderen tot de diepte waar een doel zich bevindt. De boom die we bekomen tot een diepte $m$ telt \bigoh{b^m} knopen. Bijgevolg hebben we dus ook \bigoh{b^{m-1}} evaluaties gedaan. Of eenvoudiger \bigoh{b^m}. Een ander voordeel van een Breedte-Eerst benadering is dat ook oneindig diepe bomen ge\"evalueerd kunnen worden. Bovendien zal het algoritme als oplossing een pad teruggeven met het minimale aantal stappen om tot een oplossing te komen (niet te verwarren met goedkoopste bij optimaal zoeken, het is niet omdat we het minste aantal steden passeren, dat we ook het minste kilometers afleggen).
+In tijdscomplexiteit is een breedte eerst benadering in de meeste gevallen beter. Het algoritme zal immers alleen de boom expanderen tot de diepte waar een doel zich bevindt. De boom die we bekomen tot een diepte $m$ telt \bigoh{b^m} knopen. Bijgevolg hebben we dus ook \bigoh{b^{m-1}} evaluaties gedaan. Of eenvoudiger \bigoh{b^m}. Een ander voordeel van een Breedte-Eerst benadering is dat ook oneindig diepe bomen geëvalueerd kunnen worden. Bovendien zal het algoritme als oplossing een pad teruggeven met het minimale aantal stappen om tot een oplossing te komen (niet te verwarren met goedkoopste bij optimaal zoeken, het is niet omdat we het minste aantal steden passeren, dat we ook het minste kilometers afleggen).
 \paragraph{}
-De ommezijde van deze medaille is dat het geheugen erg oneffici\"ent gebruikt wordt. Dit moet immers telkens alle paden bijhouden op een diepte $m$. Dit is uiteraard eveneens gelijk aan \bigoh{b^m}. Omdat bij een hoge $m$ of $b$ het geheugengebruik makkelijk grote proporties aanneemt waarbij zelf moderne geheugens soms moeten afhaken is Breedte-Eerst alleen geschikt voor kleine problemen.
+De ommezijde van deze medaille is dat het geheugen erg onefficiënt gebruikt wordt. Dit moet immers telkens alle paden bijhouden op een diepte $m$. Dit is uiteraard eveneens gelijk aan \bigoh{b^m}. Omdat bij een hoge $m$ of $b$ het geheugengebruik makkelijk grote proporties aanneemt waarbij zelf moderne geheugens soms moeten afhaken is Breedte-Eerst alleen geschikt voor kleine problemen.
 \paragraph{}
 Samenvattend bekomen we dus volgende criteria:
 \begin{center}
@@ -305,7 +305,7 @@ Samenvattend bekomen we dus volgende criteria:
 We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:breadthFirstCity} op pagina \pageref{fig:breadthFirstCity}.
 \end{leftbar}
 \subsubsection{Non-Deterministic Search}
-Bij \termen{Non-Deterministic Search} of de \termen{Niet-deterministisch zoeken} zoekmethode worden de gegenereerde kinderen op toevallige plaatsen in de wachtrij gezet. Het gevolg is dus dat de we toevallig de boom expanderen. Soms kunnen deze methodes tot snelle resultaten leiden, anderzijds is de tijdsduur niet te berekenen. Dit wordt ge\"illustreerd in \algref{alg:nonDeterministic}.
+Bij \termen{Non-Deterministic Search} of de \termen{Niet-deterministisch zoeken} zoekmethode worden de gegenereerde kinderen op toevallige plaatsen in de wachtrij gezet. Het gevolg is dus dat de we toevallig de boom expanderen. Soms kunnen deze methodes tot snelle resultaten leiden, anderzijds is de tijdsduur niet te berekenen. Dit wordt geïllustreerd in \algref{alg:nonDeterministic}.
 \begin{algorithm}[htb]
 \caption{Non-Deterministic zoekalgoritme}
 \label{alg:nonDeterministic}
@@ -325,8 +325,8 @@ Bij \termen{Non-Deterministic Search} of de \termen{Niet-deterministisch zoeken}
 \end{algorithmic}
 \end{algorithm}
 \paragraph{Complexiteiten}
-Het berekenen van de complexiteiten is behoorlijk eenvoudig: we weten eenvoudigweg niet hoe de knopen ge\"evalueerd zullen worden. In het slechtste geval wordt telkens een foute knoop gekozen, en moeten we dus eerst de volledige boom evalueren. De tijdscomplexiteit is dus \bigoh{b^d}. Dit algoritme zal echter niet vastlopen op oneindig diepe bomen. Vroeg of laat zal het de juiste combinatie van knopen evalueren om tot een oplossing te komen. Hoe lang dit duurt is echter onmogelijk te voorspellen. Verder kunnen we ook eerst alle knopen evalueren zodat we de onderste laag van onze boom in het geheugen opslaan. De geheugencomplexiteit is dus ook gelijk aan \bigoh{b^d}.
-\paragraph{}
+Het berekenen van de complexiteiten is behoorlijk eenvoudig: we weten eenvoudigweg niet hoe de knopen geëvalueerd zullen worden. In het slechtste geval wordt telkens een foute knoop gekozen, en moeten we dus eerst de volledige boom evalueren. De tijdscomplexiteit is dus \bigoh{b^d}. Dit algoritme zal echter niet vastlopen op oneindig diepe bomen. Vroeg of laat zal het de juiste combinatie van knopen evalueren om tot een oplossing te komen. Hoe lang dit duurt is echter onmogelijk te voorspellen. Verder kunnen we ook eerst alle knopen evalueren zodat we de onderste laag van onze boom in het geheugen opslaan. De geheugencomplexiteit is dus ook gelijk aan \bigoh{b^d}.
+
 Indien we dus het loopdetectie-systeem even buiten beschouwing laten in onze tijds- en geheugencomplexiteitsanalyse bekomen we volgende criteria:
 \begin{center}
 \begin{tabular}{ll}
@@ -340,7 +340,7 @@ Indien we dus het loopdetectie-systeem even buiten beschouwing laten in onze tij
  Een mogelijk scenario van dit algoritme is weergegeven in figuur \ref{fig:nonDeterministicCity} op pagina \pageref{fig:nonDeterministicCity}.
 \end{leftbar}
 \subsubsection{Iterative Deepening Search}
-Een in het algemeen interessante zoekmethode is \termen{Iterative Deepening Search} of \termen{Iteratief verdiepend zoeken}. Deze methode maakt gebruik van het \termen{Depth-limited search} algoritme, dit is een algoritme die een implementatie is van Depth First, maar waarbij vanaf een bepaalde diepte gestopt wordt. Iterative Deepening Search maakt van deze methode gebruik door de diepte-limiet parameter op een bepaalde beginwaarde te zetten, en deze telkens te verhogen zolang er niets gevonden wordt. Dit wordt ge\"illustreerd in \algref{alg:iterativeDeepening}.
+Een in het algemeen interessante zoekmethode is \termen{Iterative Deepening Search} of \termen{Iteratief verdiepend zoeken}. Deze methode maakt gebruik van het \termen{Depth-limited search} algoritme, dit is een algoritme die een implementatie is van Depth First, maar waarbij vanaf een bepaalde diepte gestopt wordt. Iterative Deepening Search maakt van deze methode gebruik door de diepte-limiet parameter op een bepaalde beginwaarde te zetten, en deze telkens te verhogen zolang er niets gevonden wordt. Dit wordt geïllustreerd in \algref{alg:iterativeDeepening}.
 \begin{algorithm}[htb]
 \caption{Iterative Deepening zoekalgoritme}
 \label{alg:iterativeDeepening}
@@ -370,7 +370,7 @@ De complexiteit van Iterative Deepening berekenen we als volgt. We genereren een
 \end{equation}
 \paragraph{}
 Bij het berekenen van de geheugencomplexiteit zullen we eenvoudig het maximum van de geheugencomplexiteit van de verschillende Diepte-Eerst pogingen nemen. Omdat $b\geq1$. Is dit dus gelijk aan de laatste: de geheugencomplexiteit is bijgevolg \bigoh{b\cdot m}.
-\paragraph{}
+
 Indien we dus het loopdetectie-systeem even buiten beschouwing laten in onze tijds- en geheugencomplexiteitsanalyse bekomen we volgende criteria:
 \begin{center}
 \begin{tabular}{ll}
@@ -380,9 +380,9 @@ Indien we dus het loopdetectie-systeem even buiten beschouwing laten in onze tij
 \textbf{Optimaal}:&Nee
 \end{tabular}
 \end{center}
-In veel opzichten is dit het beste blind search algoritme. Het is compleet en vindt zelfs de kortste route, daarnaast is het ook nog het snelste en het meest geheugeneffici\"ente algoritme.
+In veel opzichten is dit het beste blind search algoritme. Het is compleet en vindt zelfs de kortste route, daarnaast is het ook nog het snelste en het meest geheugenefficiënte algoritme.
 \subsubsection{Bi-Directional Search}
-\termen{Bi-Directional Search} of de \termen{bidirectioneel zoeken} zoekmethode is een methode waarbij tegelijk vanuit de bron als uit het doel gerekend wordt, en dit tot een gemeenschappelijke toestand gevonden wordt. Meestal wordt hiervoor breedte-eerst gebruikt, andere implementatie zijn echter ook mogelijk. Dit wordt ge\"illustreerd in \algref{alg:biDirectional}.
+\termen{Bi-Directional Search} of de \termen{bidirectioneel zoeken} zoekmethode is een methode waarbij tegelijk vanuit de bron als uit het doel gerekend wordt, en dit tot een gemeenschappelijke toestand gevonden wordt. Meestal wordt hiervoor breedte-eerst gebruikt, andere implementatie zijn echter ook mogelijk. Dit wordt geïllustreerd in \algref{alg:biDirectional}.
 \begin{algorithm}[htb]
 \caption{Bi-Directional zoekalgoritme (met Breedte-Eerst)}
 \label{alg:biDirectional}
@@ -408,7 +408,7 @@ In veel opzichten is dit het beste blind search algoritme. Het is compleet en vi
 \end{algorithm}
 \paragraph{Complexiteiten}
 Opnieuw is het berekenen van de complexiteiten gebaseerd op eerder berekende resultaten. We verwachten dat bij een Breedte-eerst benadering we een gemeenschappelijke toestand vinden rond $m/2$. Indien een Breedte-Eerst implementatie eindigt op deze diepte, bekomen we een tijdscomplexiteit \bigoh{b^{m/2}} en een geheugencomplexiteit \bigoh{b^{m/2}}. Dat we dit algoritme tweemaal toepassen, maakt geen verschil.
-\paragraph{}
+
 Indien we het loopdetectie-systeem even buiten beschouwing laten in onze tijds- en geheugencomplexiteitsanalyse bekomen we volgende criteria:
 \begin{center}
 \begin{tabular}{ll}
@@ -443,6 +443,7 @@ Vervolgens kunnen we onze zoekmethodes die we eerder gedefinieerd hebben omzette
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
+
 Over het algemeen werkt een algoritme gebaseerd op een heuristiek beter. Indien de heuristiek echter slecht gekozen is kan dit resulteren in dezelfde complexiteiten als voor diepte eerst:
 \begin{center}
 \begin{tabular}{ll}
@@ -456,7 +457,7 @@ Over het algemeen werkt een algoritme gebaseerd op een heuristiek beter. Indien 
 We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:hillClimbingCity} op pagina \pageref{fig:hillClimbingCity}.
 \end{leftbar}
 \subsubsection{Beam Search}
-\termen{Beam Search} kan gezien worden als de tegenhanger van breedte-eerst. Omdat breedte-eerst slechts weinig ruimte geeft om er een heuristiek aan toe te voegen is het concept licht gewijzigd. In plaats van alle knopen op een bepaald niveau te onderzoeken worden alleen de $w$ beste (laagste $h$-waarde) onderzocht. Dit resulteert in een zoekalgoritme dat niet altijd een oplossing garandeert. Anderzijds indien de heuristiek goed genoeg gekozen is, zodat een pad naar de oplossing telkens gekozen wordt, kan dit algoritme snel tot een oplossing komen. Dit algoritme is weergegeven in \algref{alg:beamSearch}
+\termen{Beam Search} kan gezien worden als de tegenhanger van breedte-eerst. Omdat breedte-eerst slechts weinig ruimte geeft om er een heuristiek aan toe te voegen is het concept licht gewijzigd. In plaats van alle knopen op een bepaald niveau te onderzoeken worden alleen de $w$ beste (laagste $h$-waarde) onderzocht. Dit resulteert in een zoekalgoritme dat niet altijd een oplossing garandeert. Anderzijds indien de heuristiek goed genoeg gekozen is, zodat een pad naar de oplossing telkens gekozen wordt, kan dit algoritme snel tot een oplossing komen. Dit algoritme is weergegeven in \algref{alg:beamSearch}. 
 \begin{algorithm}[htb]
 \caption{Beam Search zoekalgoritme}
 \label{alg:beamSearch}
@@ -484,6 +485,7 @@ We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
+
 Indien we het loopdetectie-systeem even buiten beschouwing laten in onze tijds- en geheugencomplexiteitsanalyse, en we gaan ervan uit dat het algoritme succesvol is, bekomen we volgende criteria:
 \begin{center}
 \begin{tabular}{ll}
@@ -497,7 +499,7 @@ Indien we het loopdetectie-systeem even buiten beschouwing laten in onze tijds- 
 We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:beamSearchCity} op pagina \pageref{fig:beamSearchCity}.
 \end{leftbar}
 \subsubsection{Hill Climbing 2}
-\termen{Hill Climbing 2} is een specifiek geval van Beam Search met $w=1$. De naam doet nochtans vermoeden dat het een variant van Hill Climbing is. We kunnen Hill Climbing 2 echter ook zien als een vorm van Hill Climbing zonder backtrackingsmechanisme. Dit algoritme is weergegeven in \algref{alg:hillClimbing2}
+\termen{Hill Climbing 2} is een specifiek geval van Beam Search met $w=1$. De naam doet nochtans vermoeden dat het een variant van Hill Climbing is. We kunnen Hill Climbing 2 echter ook zien als een vorm van Hill Climbing zonder backtrackingsmechanisme. Dit algoritme is weergegeven in \algref{alg:hillClimbing2}.
 \begin{algorithm}[htb]
 \caption{Hill Climbing 2 zoekalgoritme}
 \label{alg:hillClimbing2}
@@ -515,6 +517,7 @@ We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:
 \RETURN $\success$
 \end{algorithmic}
 \end{algorithm}
+
 Indien we het loopdetectie-systeem even buiten beschouwing laten in onze tijds- en geheugencomplexiteitsanalyse, en we gaan ervan uit dat het algoritme succesvol is, bekomen we volgende criteria:
 \begin{center}
 \begin{tabular}{ll}
@@ -535,7 +538,7 @@ Hill Climbing 2 is een vorm van \termen{Local Search}, dit is een zoekstrategie 
 We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:hillClimbing2City} op pagina \pageref{fig:hillClimbing2City}.
 \end{leftbar}
 \subsubsection{Greedy Search}
-\termen{Greedy Search} is samen met Hill Climbing de enige complete heuristische oplossing. Greedy Search expandeert telkens de knoop die de kleinste heuristiek heeft, daar deze waarschijnlijk het snelst tot de oplossing komt. Het houdt echter de andere knopen nog steeds in zijn queue. Dit algoritme is weergegeven in \algref{alg:greedy}
+\termen{Greedy Search} is samen met Hill Climbing de enige complete heuristische oplossing. Greedy Search expandeert telkens de knoop die de kleinste heuristiek heeft, daar deze waarschijnlijk het snelst tot de oplossing komt. Het houdt echter de andere knopen nog steeds in zijn queue. Dit algoritme is weergegeven in \algref{alg:greedy}.
 \begin{algorithm}[htb]
 \caption{Greedy zoekalgoritme}
 \label{alg:greedy}
@@ -555,6 +558,7 @@ We illustreren de werking van dit algoritme op het wegenplan in figuur \ref{fig:
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
+
 Over het algemeen levert greedy search zeer competitieve resultaten. In het slechtste geval klopt de schatting echter niet, en dwingt deze het algoritme de volledige boom te doorzoeken. We bekomen dus volgende criteria:
 \begin{center}
 \begin{tabular}{ll}
@@ -566,12 +570,12 @@ Over het algemeen levert greedy search zeer competitieve resultaten. In het slec
 \end{center}
 \subsection{Optimal Search Methods}
 \label{ss:optimalSearch}
-Onder \termen{Optimal Search} of \termen{Optimaal zoeken} verstaan we het zoeken naar een oplossing die daarenboven de kleinste \termen{accumulatieve kost} bevat. Dit leidt tot meer complexe algoritmen die meestal ook gebruikmaken van heuristische functies. De kostfunctie defini\"eren we als $c:\Pp\rightarrow\Rr:p\mapsto r=c\left(p\right)$. Hierbij is de kost van een pad $p$ te berekenen door de som tussen iedere 2 staten te bereken:
+Onder \termen{Optimal Search} of \termen{Optimaal zoeken} verstaan we het zoeken naar een oplossing die daarenboven de kleinste \termen{accumulatieve kost} bevat. Dit leidt tot meer complexe algoritmen die meestal ook gebruikmaken van heuristische functies. De kostfunctie definiëren we als $c:\Pp\rightarrow\Rr:p\mapsto r=c\left(p\right)$. Hierbij is de kost van een pad $p$ te berekenen door de som tussen iedere 2 staten te bereken:
 \begin{equation}
 c\left(p\right)=\left.\displaystyle\sum_i{c\left(p_i,p_{i+1}\right)}\ \ \ \ \ \ \ \right|c\left(p_i,p_{i+1}\right)\geq0
 \end{equation}
 \subsubsection{Uniform Cost Algorithm}
-Het \termen{Uniform Cost Algorithm}, ook wel \termen{Uniform best-first} algoritme genoemd is een variant van het greedy algoritme waarbij de queue niet gesorteerd wordt op de heuristiek, maar op de geaccumuleerde kost. Dit levert echter niet altijd de optimale oplossing op. Het kan immers zijn dat een toestand die tot dan toe de goedkoopste was een doel bereikt, maar hiervoor een zware prijs betaald. Terwijl een andere toestand in de queue aanvankelijk duurder was, maar naar het doel convergeert zodat de totale kost toch lager is. Dit wordt ge\"illustreerd in figuur \ref{fig:badUniformCost}, die een algemeen geval beschouwd. We zijn immers meer geneigd om hierbij $A$ te evalueren met een lagere kost. Een pad dat echter vanuit $B$ vertrekt, lijkt op het eerste zicht duurder, maar kost uiteindelijk minder.
+Het \termen{Uniform Cost Algorithm}, ook wel \termen{Uniform best-first} algoritme genoemd is een variant van het greedy algoritme waarbij de queue niet gesorteerd wordt op de heuristiek, maar op de geaccumuleerde kost. Dit levert echter niet altijd de optimale oplossing op. Het kan immers zijn dat een toestand die tot dan toe de goedkoopste was een doel bereikt, maar hiervoor een zware prijs betaald. Terwijl een andere toestand in de queue aanvankelijk duurder was, maar naar het doel convergeert zodat de totale kost toch lager is. Dit wordt geïllustreerd in figuur \ref{fig:badUniformCost}, die een algemeen geval beschouwd. We zijn immers meer geneigd om hierbij $A$ te evalueren met een lagere kost. Een pad dat echter vanuit $B$ vertrekt, lijkt op het eerste zicht duurder, maar kost uiteindelijk minder.
 \begin{figure}[htb]
 \centering
 \begin{tikzpicture}[stateS/.style={shape=circle,draw=black},costC/.style={below,sloped,midway},costS/.style={anchor=west}]
@@ -653,7 +657,7 @@ Indien we het loopdetectie-systeem even buiten beschouwing laten in onze tijds- 
 Een concrete uitwerking van dit algoritme wordt weergegeven op figuur \ref{fig:optimalUniformCostCity} op pagina \pageref{fig:optimalUniformCostCity}. We merken op dat deze gegarandeerde optimaliteit echter een grote hoeveelheid extra werk kan betekenen (66\% extra werk voor een oplossing die slechts 13\% beter is).
 \end{leftbar}
 \subsubsection{Extended Uniform Cost}
-Het Optimal Uniform Cost algoritme werkt goed zolang de constraint $c\left(p_i,p_{i+1}\right)>0$ stand houdt, met andere woorden dat de kost tussen elke boog groter is dan 0. Het nadeel van dit zoekalgoritme is echter dat er opnieuw weinig probleem gerelateerde informatie aan te pas komt. Een oplossing bestaat erin een nieuwe functie te defini\"eren: de \termen{Extended Uniform Cost} $f:\Pp\rightarrow\Rr:p\mapsto r=f\left(p\right)$:
+Het Optimal Uniform Cost algoritme werkt goed zolang de constraint $c\left(p_i,p_{i+1}\right)>0$ stand houdt, met andere woorden dat de kost tussen elke boog groter is dan 0. Het nadeel van dit zoekalgoritme is echter dat er opnieuw weinig probleem gerelateerde informatie aan te pas komt. Een oplossing bestaat erin een nieuwe functie te definiëren: de \termen{Extended Uniform Cost} $f:\Pp\rightarrow\Rr:p\mapsto r=f\left(p\right)$:
 \begin{equation}
 f\left(p\right)=c\left(p\right)+h\left(p_{\mbox{\small{end state}}}\right)
 \end{equation}
@@ -696,7 +700,7 @@ Over het algemeen presteren deze algoritmen goed indien een goede heuristische f
 Een uitgewerkt voorbeeld van Estimate-Extended Uniform Cost Search op het wegenplan wordt beschreven op figuur \ref{fig:estimateExtendedUniformCostCity} op pagina \pageref{fig:estimateExtendedUniformCostCity}.
 \end{leftbar}
 \subsubsection{Path Deletion}
-Een andere uitbreiding die we kunnen toepassen en die algemeen toepasbaar is, is \termen{Path Deletion}. Bij het genereren van de boom genereren we vaak dezelfde toestand in verschillende takken van de boom (volgens het principe ``vele wegen leiden naar Rome''). We kunnen echter door de evaluatie van \'e\'en van deze staten tot een oplossing komen. Evaluatie van de andere versies leidt alleen maar tot overhead, en enkel de versie van de staat met de tot dan toe laagste cummulatieve kost komt in aanmerking voor een optimale oplossing. Path Deletion verwijdert de paden uit de queue die overhead veroorzaken. Indien er al een pad bestaat met dezelfde eindstaat, en de kost van dat pad is lager, is het niet nodig om de paden met eenzelfde eindpunt maar een hogere kost in de wachtrij te houden. Deze zullen immers altijd een hogere kost behouden. Of meer formeel in \algref{alg:pathDeletion}.
+Een andere uitbreiding die we kunnen toepassen en die algemeen toepasbaar is, is \termen{Path Deletion}. Bij het genereren van de boom genereren we vaak dezelfde toestand in verschillende takken van de boom (volgens het principe ``vele wegen leiden naar Rome''). We kunnen echter door de evaluatie van één van deze staten tot een oplossing komen. Evaluatie van de andere versies leidt alleen maar tot overhead, en enkel de versie van de staat met de tot dan toe laagste cummulatieve kost komt in aanmerking voor een optimale oplossing. Path Deletion verwijdert de paden uit de queue die overhead veroorzaken. Indien er al een pad bestaat met dezelfde eindstaat, en de kost van dat pad is lager, is het niet nodig om de paden met eenzelfde eindpunt maar een hogere kost in de wachtrij te houden. Deze zullen immers altijd een hogere kost behouden. Of meer formeel in \algref{alg:pathDeletion}.
 \begin{algorithm}[htb]
 \caption{Path Deletion Principe}
 \label{alg:pathDeletion}
@@ -733,78 +737,78 @@ Het populairste zoekalgoritme bij uitstek is \termen{A* Search}, die eigenlijk e
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
-Vanwege de populariteit van A* zullen we wat dieper ingaan op enkele eigenschappen van A*.
-\paragraph{Bewijs van Optimaliteit}
-Alvorens we A* kunnen gebruiken, moeten we eerst een bewijs kunnen formuleren die borg staat dat A* altijd tot een optimale oplossing zal komen. Hiervoor maken we gebruik van enkele eigenschappen die we ook formeel aantonen. Hierbij stelt $B$ het meest optimale pad van de bron naar het doel voor.
-\begin{theorem}
-Voor ieder subpad $p$ van $B$ is de uitgebreide kost van $p$ kleiner of gelijk aan de kost van $B$. $\forall p \mbox{ subpath of } B: f\left(p\right)\leq c\left(B\right)$
-\end{theorem}
-\begin{proof}
-\[
-\begin{array}{c}
-f\left(p\right)=c\left(p\right)+h\left(p_{\mbox{\small{end point}}}\right)\wedge h\left(p_{\mbox{\small{end point}}}\right)\leq c\left(p_{\mbox{\small{end point}}}\ldots\goal\right)\\
-\Downarrow\\
-f\left(p\right)\leq c\left(p\right)+c\left(p_{\mbox{\small{end point}}}\ldots\goal\right)=c\left(p,\ldots,\goal\right)=c\left(B\right)
-\end{array}
-\]
-\end{proof}
-\begin{theorem}
-Tijdens iedere while test van A* bevat de $\queue$ een subpad van $B$
-\label{the:astarsubpath}
-\end{theorem}
-\begin{proof}
-\[
-\begin{array}{c}
-\mbox{bewijs door middel van inductie}:\\\\
-\begin{array}{ll}
-\mbox{\underline{Initieel:} }&S=\mbox{pad dat de bron bevat } \in\queue\wedge S \mbox{ is een subpad van } B\\
-&\Downarrow\\
-&\mbox{subpad van }B\in\queue\\\\
-\mbox{\underline{Iteratie:} }&\mbox{indien een subpad van $B$ verwijdert wordt}\\\\
-&\mbox{- het subpad heeft ten minste een kind (anders bestaat er geen $B$)}\\
-&\mbox{- bovendien bevat dat kind geen lus ($B$ bevat geen lus)}\\\\
-&\Rightarrow\mbox{Dit kind wordt weer toegevoegd aan de $\queue$}\\
-&\Rightarrow\mbox{een subpad van }B\in\queue\\\\
-\end{array}
-\end{array}
-\]
-\end{proof}
-\begin{corollary}
-Voor ieder pad $p$ zodat $f\left(p\right)>c\left(B\right)$, kan $p$ nooit geselecteerd worden (Het zal nooit als eerste in de $\queue$ zitten).
-\end{corollary}
-\begin{proof}
-\[
-\begin{array}{c}
-\begin{array}{rcl}
-\mbox{altijd een subpad $q$ van}&\wedge&f\left(q\right)\leq c\left(B\right)<f\left(p\right)\\
-\mbox{$B$ met } f\left(q\right)\leq c\left(B\right)&&\\
-&\Downarrow&\\
-\multicolumn{3}{c}{\mbox{$p$ wordt nooit geselecteerd}}
-\end{array}
-\end{array}
-\]
-\end{proof}
-\paragraph{Bewijs van terminatie}
-Stel $d$ is een natuurlijk getal $>c\left(B\right)/\delta$ (hierbij is $\delta$ de kleinste kost van alle bogen), en stel $P$ een pad van lengte $d$. In dat geval geldt:
-\begin{equation}
-f\left(P\right)=c\left(P\right)+h\left(P\right)\geq c\left(P\right)\geq d\cdot\delta>c\left(B\right)=f\left(B\right)
-\end{equation}
-We weten dus dat het pad $P$ nooit geselecteerd zal worden ($B$ is immers een pad dat het doel bereikt, en heeft een lagere $f$-waarde). Omdat we uitgaan van een eindige vertakkingsfactor $b$, zijn er dus maar een eindig aantal knopen die in de $\queue$ geplaatst kunnen worden. Omdat telkens wanneer we de lus uitvoeren er \'e\'en element uit de $\queue$ gehaald wordt, zal de $\queue$ op een gegeven moment leeg zijn, waardoor de lus doorbroken wordt en het algoritme stopt.
-\paragraph{Bewijs van compleetheid}
-Door theorema \ref{the:astarsubpath} kunnen we bewijzen dat het pad dat uiteindelijk zal evolueren naar een doel altijd in de $\queue$ zit, bijgevolg zal A* altijd het doel vinden.
+% Vanwege de populariteit van A* zullen we wat dieper ingaan op enkele eigenschappen van A*.
+% \\paragraph{Bewijs van Optimaliteit}
+% Alvorens we A* kunnen gebruiken, moeten we eerst een bewijs kunnen formuleren die borg staat dat A* altijd tot een optimale oplossing zal komen. Hiervoor maken we gebruik van enkele eigenschappen die we ook formeel aantonen. Hierbij stelt $B$ het meest optimale pad van de bron naar het doel voor.
+% \begin{theorem}
+% Voor ieder subpad $p$ van $B$ is de uitgebreide kost van $p$ kleiner of gelijk aan de kost van $B$. $\forall p \mbox{ subpath of } B: f\left(p\right)\leq c\left(B\right)$
+% \end{theorem}
+% \begin{proof}
+% \[
+% \begin{array}{c}
+% f\left(p\right)=c\left(p\right)+h\left(p_{\mbox{\small{end point}}}\right)\wedge h\left(p_{\mbox{\small{end point}}}\right)\leq c\left(p_{\mbox{\small{end point}}}\ldots\goal\right)\\
+% \Downarrow\\
+% f\left(p\right)\leq c\left(p\right)+c\left(p_{\mbox{\small{end point}}}\ldots\goal\right)=c\left(p,\ldots,\goal\right)=c\left(B\right)
+% \end{array}
+% \]
+% \end{proof}
+% \begin{theorem}
+% Tijdens iedere while test van A* bevat de $\queue$ een subpad van $B$
+% \label{the:astarsubpath}
+% \end{theorem}
+% \begin{proof}
+% \[
+% \begin{array}{c}
+% \mbox{bewijs door middel van inductie}:\\\\
+% \begin{array}{ll}
+% \mbox{\underline{Initieel:} }&S=\mbox{pad dat de bron bevat } \in\queue\wedge S \mbox{ is een subpad van } B\\
+% &\Downarrow\\
+% &\mbox{subpad van }B\in\queue\\\\
+% \mbox{\underline{Iteratie:} }&\mbox{indien een subpad van $B$ verwijdert wordt}\\\\
+% &\mbox{- het subpad heeft ten minste een kind (anders bestaat er geen $B$)}\\
+% &\mbox{- bovendien bevat dat kind geen lus ($B$ bevat geen lus)}\\\\
+% &\Rightarrow\mbox{Dit kind wordt weer toegevoegd aan de $\queue$}\\
+% &\Rightarrow\mbox{een subpad van }B\in\queue\\\\
+% \end{array}
+% \end{array}
+% \]
+% \end{proof}
+% \begin{corollary}
+% Voor ieder pad $p$ zodat $f\left(p\right)>c\left(B\right)$, kan $p$ nooit geselecteerd worden (Het zal nooit als eerste in de $\queue$ zitten).
+% \end{corollary}
+% \begin{proof}
+% \[
+% \begin{array}{c}
+% \begin{array}{rcl}
+% \mbox{altijd een subpad $q$ van}&\wedge&f\left(q\right)\leq c\left(B\right)<f\left(p\right)\\
+% \mbox{$B$ met } f\left(q\right)\leq c\left(B\right)&&\\
+% &\Downarrow&\\
+% \multicolumn{3}{c}{\mbox{$p$ wordt nooit geselecteerd}}
+% \end{array}
+% \end{array}
+% \]
+% \end{proof}
+% \paragraph{Bewijs van terminatie}
+% Stel $d$ is een natuurlijk getal $>c\left(B\right)/\delta$ (hierbij is $\delta$ de kleinste kost van alle bogen), en stel $P$ een pad van lengte $d$. In dat geval geldt:
+% \begin{equation}
+% f\left(P\right)=c\left(P\right)+h\left(P\right)\geq c\left(P\right)\geq d\cdot\delta>c\left(B\right)=f\left(B\right)
+% \end{equation}
+% We weten dus dat het pad $P$ nooit geselecteerd zal worden ($B$ is immers een pad dat het doel bereikt, en heeft een lagere $f$-waarde). Omdat we uitgaan van een eindige vertakkingsfactor $b$, zijn er dus maar een eindig aantal knopen die in de $\queue$ geplaatst kunnen worden. Omdat telkens wanneer we de lus uitvoeren er één element uit de $\queue$ gehaald wordt, zal de $\queue$ op een gegeven moment leeg zijn, waardoor de lus doorbroken wordt en het algoritme stopt.
+% \paragraph{Bewijs van compleetheid}
+% Door theorema \ref{the:astarsubpath} kunnen we bewijzen dat het pad dat uiteindelijk zal evolueren naar een doel altijd in de $\queue$ zit, bijgevolg zal A* altijd het doel vinden.
 \paragraph{Selectiegedrag van A*}
-Welke knopen zullen ge\"expandeert worden? We kunnen de impliciete boom onderverdelen in drie verschillende groepen:
+Welke knopen zullen geëxpandeert worden? We kunnen de impliciete boom onderverdelen in drie verschillende groepen:
 \begin{itemize}
  \item \termen{Nooit geselecteerde knopen}: Hierbij is $f\left(p\right)>c\left(B\right)$ of een redundant pad.
  \item \termen{Misschien geselecteerd knopen}: Hierbij is $f\left(p\right)=c\left(B\right)$
  \item \termen{Geselecteerde knopen}: Hierbij is $p\in\queue\wedge p\mbox{ is niet redundant}\wedge f\left(p\right)<c\left(B\right)$
 \end{itemize}
 \paragraph{Heuristische kracht}
-\termen{Heuristical Power} gaat over in welke mate de heuristische functie belangrijk is voor het A* algoritme, en of we twee heuristische functies op de \'e\'en of andere manier kunnen vergelijken met elkaar. Door de constraint dat iedere heuristische functie alleen strikt positieve getallen moet teruggeven, en daarenboven een onderschatting moet zijn van de nog te nemen kost, kunnen we aantonen dat de heuristische functie het A* algoritme in ieder geval niet slechter kan doen presteren dan bijvoorbeeld het Optimal Uniform Cost algoritme. Indien we echter naar een vergelijking tussen twee heuristische functies streven, is het zo dat een functie die bij iedere toestand een grotere waarde retourneert dan zijn tegenhanger per definitie beter is. Met andere woorden:
+\termen{Heuristical Power} gaat over in welke mate de heuristische functie belangrijk is voor het A* algoritme, en of we twee heuristische functies op de één of andere manier kunnen vergelijken met elkaar. Door de constraint dat iedere heuristische functie alleen strikt positieve getallen moet teruggeven, en daarenboven een onderschatting moet zijn van de nog te nemen kost, kunnen we aantonen dat de heuristische functie het A* algoritme in ieder geval niet slechter kan doen presteren dan bijvoorbeeld het Optimal Uniform Cost algoritme. Indien we echter naar een vergelijking tussen twee heuristische functies streven, is het zo dat een functie die bij iedere toestand een grotere waarde retourneert dan zijn tegenhanger per definitie beter is. Met andere woorden:
 \begin{equation}
  h_1 \mbox{ is beter dan } h_2\leftrightarrow\forall s\in\Ss:h_1\left(s\right)\geq h_2\left(s\right)
 \end{equation}
-Dit kunnen we beargumenteren omdat een heuristische functie per definitie een onderschatting moet zijn voor de werkelijke nog te betalen kost, en dus de heuristiek waarschijnlijk realistischer zal zijn. Verder kunnen we ook nog formeel aantonen dat indien $h_1$ beter is dan $h_2$ en er bestaat een pad van de bron naar het doel, dan zal A* met $h_2$ alle knopen evalueren die A* onder $h_1$ ge\"evalueerd zou hebben, met andere woorden A* zal zo goed als altijd langer werken met een slechtere heuristiek dan met een betere, volgens onze definitie van beter.
+Dit kunnen we beargumenteren omdat een heuristische functie per definitie een onderschatting moet zijn voor de werkelijke nog te betalen kost, en dus de heuristiek waarschijnlijk realistischer zal zijn. Verder kunnen we ook nog formeel aantonen dat indien $h_1$ beter is dan $h_2$ en er bestaat een pad van de bron naar het doel, dan zal A* met $h_2$ alle knopen evalueren die A* onder $h_1$ geëvalueerd zou hebben, met andere woorden A* zal zo goed als altijd langer werken met een slechtere heuristiek dan met een betere, volgens onze definitie van beter.
 \subparagraph{Minimale kost paden en monotoniciteit}
 Als we \algref{alg:pathDeletion} dichter bekijken zien we een asymmetrie in het algoritme, dit resulteert in het feit dat niet elke redundante knoop ontdekt wordt. Indien we bijvoorbeeld een pad beschouwen $\left(S,A,C,D\right)$ dat bij $C$ een geaccumuleerde kost heeft van $5$, en we expanderen een ander pad zodat er een kind-pad ontstaat $\left(S,B,C\right)$ met een geaccumuleerde kost van $4$ zal het eerste pad niet verwijdert worden (zie figuur \ref{fig:badMonotonicity}, hierbij gebeurt evaluatie als volgt: $S$, $A$, $C$, $D$ en $B$).
 \begin{figure}[htb]
@@ -842,11 +846,12 @@ Als we \algref{alg:pathDeletion} dichter bekijken zien we een asymmetrie in het 
 \caption{Concreet geval van een niet monotone heuristiek}
 \label{fig:badMonotonicity}
 \end{figure}
-Het is immers al het verst uitgebreid, en de kost is niet lager. Deze situatie kan voorkomen indien de heuristiek van $B$ bijvoorbeeld heel hoog was, terwijl deze van $A$ en $C$ veel kleiner waren. We kunnen het Path Deletion algoritme in principe niet al te veel aanpassen zodat het hier ook rekening mee houdt. Dit komt omdat deze knoop al ge\"expandeert is en we dus dubbel werk willen vermijden. Anderzijds kunnen we een constraint opleggen op onze heuristiek zodat deze nooit tot dergelijk situaties kan leiden. Deze constraint heet \termen{Monotoniciteit} of \termen{Monotonicity}. Deze stelt dat indien we een staat $A$ hebben, en $B$ is hiervan een kind, dan moet de heuristische waarde van $A$ kleiner of gelijk zijn aan de heuristische waarde van $B$ en de kost van $A$ naar $B$, of meer formeel:
+
+Het is immers al het verst uitgebreid, en de kost is niet lager. Deze situatie kan voorkomen indien de heuristiek van $B$ bijvoorbeeld heel hoog was, terwijl deze van $A$ en $C$ veel kleiner waren. We kunnen het Path Deletion algoritme in principe niet al te veel aanpassen zodat het hier ook rekening mee houdt. Dit komt omdat deze knoop al geëxpandeert is en we dus dubbel werk willen vermijden. Anderzijds kunnen we een constraint opleggen op onze heuristiek zodat deze nooit tot dergelijk situaties kan leiden. Deze constraint heet \termen{Monotoniciteit} of \termen{Monotonicity}. Deze stelt dat indien we een staat $A$ hebben, en $B$ is hiervan een kind, dan moet de heuristische waarde van $A$ kleiner of gelijk zijn aan de heuristische waarde van $B$ en de kost van $A$ naar $B$, of meer formeel:
 \begin{equation}
 B\mbox{ is een kind van }A\rightarrow h\left(A\right)\leq h\left(B\right)+c\left(A,B\right)
 \end{equation}
-Opnieuw is deze maatregel redelijk: indien immers niet aan de monotoniciteitsregel wordt voldaan betekent dit dat de heuristiek van $B$ een nog grotere onderschatting van het pad is dan de heuristiek van $A$. We weten na de heuristiek van $A$ te hebben ge\"evalueerd reeds dat we meer kosten zullen hebben dan die heuristiek. Indien $B$ een grotere onderschatting is, weten we eigenlijk helemaal niets nieuws. De heuristiek van $B$ zou in dat geval informatieloos zijn. A* zal indien we de monotoniciteitsregel volgen altijd een knoop selecteren met het meest effici\"entste pad tot de knoop. Verder kunnen we ook het Redudant Path algoritme optimaliseren onder deze voorwaarde, zoals in \algref{alg:optimalPathDeletion}.
+Opnieuw is deze maatregel redelijk: indien immers niet aan de monotoniciteitsregel wordt voldaan betekent dit dat de heuristiek van $B$ een nog grotere onderschatting van het pad is dan de heuristiek van $A$. We weten na de heuristiek van $A$ te hebben geëvalueerd reeds dat we meer kosten zullen hebben dan die heuristiek. Indien $B$ een grotere onderschatting is, weten we eigenlijk helemaal niets nieuws. De heuristiek van $B$ zou in dat geval informatieloos zijn. A* zal indien we de monotoniciteitsregel volgen altijd een knoop selecteren met het meest efficiëntste pad tot de knoop. Verder kunnen we ook het Redudant Path algoritme optimaliseren onder deze voorwaarde, zoals in \algref{alg:optimalPathDeletion}.
 \begin{algorithm}[htb]
 \caption{Geoptimaliseerd Path Deletion Principe}
 \label{alg:optimalPathDeletion}
@@ -862,18 +867,19 @@ Opnieuw is deze maatregel redelijk: indien immers niet aan de monotoniciteitsreg
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
+
 Hierdoor wordt path deletion vrijwel altijd gedaan in \bigoh{1}.
 \paragraph{Pathmax}
 \termen{Pathmax} is een variant van A* die deze monotoniciteitsregel afdwingt. Dit kan op verschillende manieren gedaan worden:
 \begin{itemize}
  \item Corrigeren van de waarde van $f$: Indien $B$ een kind is van $A$ en $f\left(S,\ldots,A,B\right)<f\left(S,\ldots,A,\right)$ dan nemen we voor $f\left(S,\ldots,A,B\right)$ dezelfde waarde als $f\left(S,\ldots,A\right)$.
- \item $f$ herdefini\"eren: we genereren zelf een functie $f'$ die we defini\"eren als
+ \item $f$ herdefiniëren: we genereren zelf een functie $f'$ die we definiëren als
 \begin{equation}
 f'\left(S,\ldots,A,B\right)=\mathfunc{max}{c\left(S,\ldots,A,B\right)+h\left(B\right),f'\left(S,\ldots,A\right)}
 \end{equation}
 \end{itemize}
 \subsubsection{Iterative Deepening A* (IDA*)}
-Een variant van A* is \termen{Iterative Deepening A*} of afgekort \termen{IDA*}. Deze heeft tot doel het geheugengebruik van A* meer onder controle te houden (we kunnen A* immers in de verte vergelijken met breedte-eerst, en dit algoritme is niet zuinig met geheugen). Net als Iterative Deepening een beperking op de diepte stelt voor Depth-First, stelt IDA* een beperking op de $f$ waarde. Indien we verwachten dat de oplossing bijvoorbeeld een $f$-waarde zal hebben van 100 zal het algoritme de kinderen van ge\"evalueerde knopen niet meer opslaan indien deze een $f$-waarde groter hebben dan 100. Uiteraard kan het gebeuren dat onze schatting niet toereikend was om tot een oplossing te komen, in dat geval wordt de $f$-waarde verhoogt en voeren \termen{$f$-limited Search} opnieuw uit. Meestal wordt als begin $f$-waarde de $f$-waarde van de bron $f\left(S\right)$ genomen, al dan niet vermenigvuldigt met een factor. Verder wordt de $f$-limiet meestal verhoogt naar de minimale $f$ die groter was dan de $f$-limiet. Dit wordt beschreven in \algref{alg:iterativeDeepeningAStar}.
+Een variant van A* is \termen{Iterative Deepening A*} of afgekort \termen{IDA*}. Deze heeft tot doel het geheugengebruik van A* meer onder controle te houden (we kunnen A* immers in de verte vergelijken met breedte-eerst, en dit algoritme is niet zuinig met geheugen). Net als Iterative Deepening een beperking op de diepte stelt voor Depth-First, stelt IDA* een beperking op de $f$ waarde. Indien we verwachten dat de oplossing bijvoorbeeld een $f$-waarde zal hebben van 100 zal het algoritme de kinderen van geëvalueerde knopen niet meer opslaan indien deze een $f$-waarde groter hebben dan 100. Uiteraard kan het gebeuren dat onze schatting niet toereikend was om tot een oplossing te komen, in dat geval wordt de $f$-waarde verhoogt en voeren \termen{$f$-limited Search} opnieuw uit. Meestal wordt als begin $f$-waarde de $f$-waarde van de bron $f\left(S\right)$ genomen, al dan niet vermenigvuldigt met een factor. Verder wordt de $f$-limiet meestal verhoogt naar de minimale $f$ die groter was dan de $f$-limiet. Dit wordt beschreven in \algref{alg:iterativeDeepeningAStar}.
 \begin{algorithm}[htb]
 \caption{Iterative Deepening A* zoekalgoritme}
 \label{alg:iterativeDeepeningAStar}
@@ -908,13 +914,13 @@ Indien we het loopdetectie- en path deletion-systeem even buiten beschouwing lat
 \begin{tabular}{ll}
 \textbf{Compleet}:&Ja\\
 \textbf{Snelheid}:&\bigoh{N^2}\\
-\textbf{Geheugen}:&\bigoh{b\cdot c\left(B\right)/\delta}\\
+\textbf{Geheugen}:&\bigoh{b\cdot \text{cost}\left(B\right)/\delta}\\
 \textbf{Optimaal}:&Ja\\
 \end{tabular}
 \end{center}
 \subsubsection{Simplified Memory-bounded A* (SMA*)}
 Een gelijkaardig effect probeert \termen{Simplified Memory-bounded A*} (of kortweg \termen{SMA*}) te bereiken. Hierbij is het geheugen echter begrensd, en moeten we proberen om in deze beperkende omstandigheden toch een optimale oplossing te vinden. Dit behoorlijke complexe algoritme heeft als basisidee dat indien het geheugen vol is, en we moeten een knoop evalueren, de knopen met de hoogste $f$-waarde tijdelijk uit het geheugen worden gelaten. Om echter geen overbodig werkt te doen in het herberekenen van alle knopen veranderen we de $f$-waarde van de ouder. De ouder van een te verwijderen knoop houdt telkens de beste (laagste) $f$-waarde van van zijn kinderen bij. Deze $f$-waardes spelen vervolgens nog een rol om de knopen opnieuw te evalueren, en te zoeken naar een eventueel doel.
-\paragraph{}Een belangrijk aspect hierbij is dat kinderen \'e\'en voor \'e\'en gegenereerd worden om geen \termen{Memory Overflow} te bekomen. Indien het geheugen vol is, moet een knoop wijken voor de te genereren knoop. Verder kan dit algoritme uiteraard geen doelen vinden waarbij het pad naar het doel meer geheugen vereist dan er beschikbaar is. Het algoritme is echter wel compleet wanneer er voldoende geheugen voorradig is.
+\paragraph{}Een belangrijk aspect hierbij is dat kinderen één voor één gegenereerd worden om geen \termen{Memory Overflow} te bekomen. Indien het geheugen vol is, moet een knoop wijken voor de te genereren knoop. Verder kan dit algoritme uiteraard geen doelen vinden waarbij het pad naar het doel meer geheugen vereist dan er beschikbaar is. Het algoritme is echter wel compleet wanneer er voldoende geheugen voorradig is.
 \subsection{Besluitende commentaren}
 \subsubsection{Niet Optimale Varianten}
 Tot dusver zochten we altijd naar optimale oplossingen, soms is het echter beter om niet de meest optimale oplossing te zoeken indien dit tijdswinst kan opleveren. Indien we gebruik maken van \termen{Non-optimal variants}, is dit meestal door de heuristiek aan te passen. Deze zullen meestal het onderschattings-aspect achterwege laten, en worden meestal \termen{Non-admissible heuristics} genoemd. Een andere mogelijkheid is het toepassen van een ander zoekalgoritme. Een variant van A*, het \termen{Non-admissible A* Search Algorithm} is hier een voorbeeld van. Hierbij wordt $f$ als volgt gedefinieerd:
@@ -929,28 +935,29 @@ Bij nature is het vinden van een optimaal pad dat naar een oplossing voor een de
 \label{app:SearchMethods}
 \begin{table}[H]
 \centering
-\begin{tabular}{l|llll|l}
-\hline
-\textbf{Name}&\textbf{Compleet}&\textbf{Optimaal}&\textbf{Snelheid}&\textbf{Geheugen}&\textbf{Alg.(p.)}\\\hline
-\hline
-\multicolumn{6}{l}{\textbf{Blind Search}}\\\hline
-- Depth First&Ja&Nee&\bigoh{b^d}&\bigoh{b\cdot d}&\ref{alg:depthFirst}(\pageref{alg:depthFirst})\\\hline
-- Breadth First&Ja&Nee&\bigoh{b^m}&\bigoh{b^m}&\ref{alg:breadthFirst}(\pageref{alg:breadthFirst})\\\hline
-- Neen-Deterministic&Ja&Nee&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:nonDeterministic}(\pageref{alg:nonDeterministic})\\\hline
-- Iterative Deepening&Ja&Nee&\bigoh{b^m}&\bigoh{b\cdot m}&\ref{alg:iterativeDeepening}(\pageref{alg:iterativeDeepening})\\\hline
-- Bi-Direction Search&Ja&Nee&\bigoh{b^{m/2}}&\bigoh{b^{m/2}}&\ref{alg:biDirectional}(\pageref{alg:biDirectional})\\\hline
-\multicolumn{6}{l}{\textbf{Heuristic Search}}\\\hline
-- Hill Climbing&Ja&Nee&\bigoh{b^d}&\bigoh{b\cdot d}&\ref{alg:hillClimbing}(\pageref{alg:hillClimbing})\\\hline
-- Beam Search&Nee&Nee&\bigoh{w\cdot m}&\bigoh{w}&\ref{alg:beamSearch}(\pageref{alg:beamSearch})\\\hline
-- Hill Climbing 2&Nee&Nee&\bigoh{m}&\bigoh{b}&\ref{alg:hillClimbing2}(\pageref{alg:hillClimbing2})\\\hline
-- Greedy Search&Ja&Nee&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:greedy}(\pageref{alg:greedy})\\\hline
-\multicolumn{6}{l}{\textbf{Optimal Search}}\\\hline
-- Uniform Cost&Ja&Nee&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:uniformCost}(\pageref{alg:uniformCost})\\\hline
-- Optimal Uniform Cost&Ja&Ja&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:optimalUniformCost}(\pageref{alg:optimalUniformCost})\\\hline
-- Estimate-extended Uniform Cost&Ja&Ja&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:estimateExtendedUniformCost}(\pageref{alg:estimateExtendedUniformCost})\\\hline
-- A*&Ja&Ja&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:aStar}(\pageref{alg:aStar})\\\hline
-- Iterative Deepening A*&Ja&Ja&\bigoh{N^2}&\bigoh{b\cdot c\left(B\right)/\delta}&\ref{alg:iterativeDeepeningAStar}(\pageref{alg:iterativeDeepeningAStar})\\\hline
-- Simplified Memory-bounded A*&Ja&Ja&\bigoh{b^d}&\bigoh{1}&\\\hline
+\begin{tabular}{lllll|l}
+\toprule
+\textbf{Name}&\textbf{Compleet}&\textbf{Optimaal}&\textbf{Snelheid}&\textbf{Geheugen}&\textbf{Alg.}\\
+\midrule
+\multicolumn{6}{l}{\textbf{Blind Search}}\\ 
+- Depth First&Ja&Nee&\bigoh{b^d}&\bigoh{b\cdot d}&\ref{alg:depthFirst}\\ 
+- Breadth First&Ja&Nee&\bigoh{b^m}&\bigoh{b^m}&\ref{alg:breadthFirst}\\ 
+- Neen-Deterministic&Ja&Nee&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:nonDeterministic}\\ 
+- Iterative Deepening&Ja&Nee&\bigoh{b^m}&\bigoh{b\cdot m}&\ref{alg:iterativeDeepening}\\ 
+- Bi-Direction Search&Ja&Nee&\bigoh{b^{m/2}}&\bigoh{b^{m/2}}&\ref{alg:biDirectional}\\ 
+\multicolumn{6}{l}{\textbf{Heuristic Search}}\\ 
+- Hill Climbing&Ja&Nee&\bigoh{b^d}&\bigoh{b\cdot d}&\ref{alg:hillClimbing}\\ 
+- Beam Search&Nee&Nee&\bigoh{w\cdot m}&\bigoh{w}&\ref{alg:beamSearch}\\ 
+- Hill Climbing 2&Nee&Nee&\bigoh{m}&\bigoh{b}&\ref{alg:hillClimbing2}\\ 
+- Greedy Search&Ja&Nee&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:greedy}\\ 
+\multicolumn{6}{l}{\textbf{Optimal Search}}\\ 
+- Uniform Cost&Ja&Nee&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:uniformCost}\\ 
+- Optimal Uniform Cost&Ja&Ja&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:optimalUniformCost}\\ 
+- Estimate-extended Uniform Cost&Ja&Ja&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:estimateExtendedUniformCost}\\ 
+- A*&Ja&Ja&\bigoh{b^d}&\bigoh{b^d}&\ref{alg:aStar}\\ 
+- Iterative Deepening A*&Ja&Ja&\bigoh{N^2}&\bigoh{b\cdot c\left(B\right)/\delta}&\ref{alg:iterativeDeepeningAStar}\\ 
+- Simplified Memory-bounded A*&Ja&Ja&\bigoh{b^d}&\bigoh{1}&\\
+\bottomrule
 \end{tabular}
 \caption{Samenvatting van de zoekmethodes}
 \end{table}
