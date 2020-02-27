@@ -1,4 +1,4 @@
-\documentclass[titlepage,a4paper]{article}
+\documentclass[titlepage,a4paper,twoside]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -21,13 +21,26 @@
 \usepackage{ulem}
 \usepackage[hidelinks]{hyperref}
 
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage[dutch]{varioref}
+
+%%% set up the headers
+\pagestyle{fancy}
+% Clear the header and footer
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[RO,LE]{\thepage} % the page number goes on the outer part
+\renewcommand{\headrulewidth}{0pt}
+
 \usetikzlibrary{decorations.pathmorphing}
 
 \algsetup{indent=2em}
 \makeindex
-\title{Cursus:\\Artifici\"ele Intelligentie\\\texttt{\small versie 1.6.180.340}}
+\title{Cursus:\\Artificiële Intelligentie\\\texttt{\small versie 1.6.180.340}}
 \author{Willem M. A. Van Onsem BSc}
-\date{Katholieke Universiteit Leuven\\Academiejaar 2009-2010}
+\date{Katholieke Universiteit Leuven\\Academiejaar 2009-2010\\
+\vspace{4em}Laatste herziening: januari 2020}
 
 \newcommand{\bigoh}[1]{\ensuremath{\mathcal{O}\left(#1\right)}}
 \newcommand{\termenlayout}[1]{\textbf{\sffamily{#1}}}
@@ -124,6 +137,7 @@
 
 \begin{document}
 \begin{titlepage}
+\pagenumbering{gobble}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=5cm]{sedesVcrop.pdf}
@@ -144,15 +158,17 @@ $\mathfrak{KOMMUSOFT}$
 \end{figure*}
 \maketitle
 \end{titlepage}
+\cleardoublepage
+\pagenumbering{arabic}
 \tableofcontents
 \newpage
 \section*{Notities vooraf}
 \begin{it}
 De index op het einde is bedoelt als een woordenlijst, indien de lezer het grote deel van deze termen kan thuisbrengen en duiden, is het waarschijnlijk dat hij zal slagen voor het examen.
 \\\\
-Deze cursus is hoofdzakelijk gebaseerd op de presentaties van Prof. D. De Schreye. Verder is deze cursus ook gebaseerd op de presentatie rond ``Metaheuristieken'' van Prof. P. De Causmaecker.
+Deze cursus is hoofdzakelijk gebaseerd op de presentaties van Prof. D. De Schreye. 
 \\\\
-Deze cursus is gepubliceerd onder de ``CopyLeft''-licentie, dit betekent dat iedereen vrij is deze te kopi\"eren, delen, herpubliceren en aanpassen zonder toestemming van de auteur in kwestie, indien dit onder dezelfde licentie gebeurt.\\ Indien de \LaTeX-broncode hierbij gewenst is, kunt u mailen naar {\tt vanonsem.willem@gmail.com}.
+Deze cursus is gepubliceerd onder de ``CopyLeft''-licentie, dit betekent dat iedereen vrij is deze te kopiëren, delen, herpubliceren en aanpassen zonder toestemming van de auteur in kwestie, indien dit onder dezelfde licentie gebeurt.\\ Indien de \LaTeX-broncode hierbij gewenst is, kunt u mailen naar {\tt vanonsem.willem@gmail.com}.
 \\\\
 De auteur garandeert de juistheid van deze cursus \underline{niet}. Hoewel deze cursus met de nodige zorg is samengesteld, is het niet ondenkbaar dat er fouten in staan. Errata/opmerkingen/suggesties kunnen altijd doorgestuurd worden naar {\tt vanonsem.willem@gmail.com}, deze worden dan in de volgende versie verbeterd.
 
@@ -166,7 +182,7 @@ Kudos gaan verder uit naar de volgende groepen/personen (in alfabetische volgord
  \item[\textbf{\texttt{DhfCYscOCwsXB}}] Voor een glimlach van tijd tot tijd.
  \item[Donald Knuth] Voor een norm hoe cursussen er horen uit te zien, en de ontwikkeling van \TeX{}.
  \item[Ingmar Dasseville] Debugger van deze cursus en pianist die het algemene karma verstoort.
- \item[Jonas Vanthornhout] Invoeren van de term ``\"Uberalgemene Modus Ponens'' (zie \ref{sss:unification}).
+ \item[Jonas Vanthornhout] Invoeren van de term ``Überalgemene Modus Ponens'' (zie \ref{sss:unification}).
  \item[\texttt{Narod.Ru}] Voor culturele ontdekkingen.
  \item[Personen die errata indienden] Harm De Weirdt, Ingmar Dasseville, Maarten Dhondt, Pieter-Jan Vuylsteke, Robin De Croon.
  \item[Tweede Bachelor Informatica KULAK 2010-2011] Die waarschijnlijk zullen proberen om deze cursus te lezen, en daar hopelijk ook in slagen.
@@ -180,7 +196,7 @@ Kudos gaan verder uit naar de volgende groepen/personen (in alfabetische volgord
 \include{ai_constraintprocessing}
 \include{ai_gameplaying}
 \include{ai_automaticreasoning}
-\include{ai_metaheuristics}
+% \include{ai_metaheuristics}
 \appendix
 \include{ai_appendices}
 \newpage
@@ -202,7 +218,7 @@ Vrijheid van \textbf{Heisenbergh}
 -\displaystyle\frac{\hbar^2}{2m}\displaystyle\frac{\partial^2\Psi}{\partial x^2}+U\cdot\Psi=E\cdot\Psi
 \]
 \begin{flushright}
-Alles gaat in golven van \textbf{Schr\"odinger}
+Alles gaat in golven van \textbf{Schrödinger}
 \end{flushright}
 \[
 x'=\displaystyle\frac{x-v\cdot t}{\sqrt{1-\displaystyle\frac{v^2}{c^2}}}
